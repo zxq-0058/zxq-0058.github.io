@@ -20,23 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zxq-0058.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="zxq的个人博客">
-<meta property="og:url" content="https://zxq-0058.github.io/archives/2021/index.html">
+<meta name="description" content="预处理:将给定的 N 个点按照 x 从小到大进行排序,设在同一直线上点的编号为$1,2\dots N-1$, 不在直线的点编号为 N  若起点恰好是 N ,最优解是$min(dis(1, N-1) + dis(1,N), dis(1, N-1) +dis(N-1, N) )$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1599I">
+<meta property="og:url" content="https://zxq-0058.github.io/2021/10/24/1599I/index.html">
 <meta property="og:site_name" content="zxq的个人博客">
+<meta property="og:description" content="预处理:将给定的 N 个点按照 x 从小到大进行排序,设在同一直线上点的编号为$1,2\dots N-1$, 不在直线的点编号为 N  若起点恰好是 N ,最优解是$min(dis(1, N-1) + dis(1,N), dis(1, N-1) +dis(N-1, N) )$">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/10/24/1599I/grap.png">
+<meta property="article:published_time" content="2021-10-24T02:35:02.000Z">
+<meta property="article:modified_time" content="2021-10-24T02:53:14.434Z">
 <meta property="article:author" content="Xuqin zhang">
+<meta property="article:tag" content="codeforce">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zxq-0058.github.io/2021/10/24/1599I/grap.png">
 
 
-<link rel="canonical" href="https://zxq-0058.github.io/archives/2021/">
+<link rel="canonical" href="https://zxq-0058.github.io/2021/10/24/1599I/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2021/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2021/10/24/1599I/","path":"2021/10/24/1599I/","title":"1599I"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | zxq的个人博客</title>
+<title>1599I | zxq的个人博客</title>
   
 
 
@@ -157,52 +164,105 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 4 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zxq-0058.github.io/2021/10/24/1599I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuqin zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zxq的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1599I
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="创建时间：2021-10-24 10:35:02 / 修改时间：10:53:14" itemprop="dateCreated datePublished" datetime="2021-10-24T10:35:02+08:00">2021-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codeforce/" itemprop="url" rel="index"><span itemprop="name">codeforce</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>预处理:将给定的 N 个点按照 x 从小到大进行排序,设在同一直线上点的编号为$1,2\dots N-1$, 不在直线的点编号为 N </p>
+<div class="note info"><p>若起点恰好是 N ,最优解是$min(dis(1, N-1) + dis(1,N), dis(1, N-1) +dis(N-1, N) )$</p>
+</div> 
+<p><img src="/2021/10/24/1599I/grap.png" alt="这是代替图片的文字，随便写"><br><span id="more"></span><br>证明:假若 N 先经过 i ,$(i\not=N-1, i\not=1)$, 那么此时:</p>
+<p>$total_{-}dis=(\ dis(N, i)+dis(i, N-1) \ )+ dis(N-1, i)+dis(i, 1)$<br>$&gt;dis(N-1, N)+dis(N-1, i)+<br>+dis(i, 1) = dis(N-1, N)+dis(N-1, 1)$</p>
+<div class="note info"><p>若起点不是 N , 固定 $K \leq i&lt; N-1$,<br>$min(dis(k, 1) + dis(1,N), dis(N, i) +dis(k, i) + dis(i, N-1) $<br>,$dis(k, 1) + dis(1, i) + dis(i, N)+dis(N, i+1) + dis(i+1, N))$是候选答案;<br>固定$ 1&lt; j \leq K$, $min(dis(k, N-1) + dis(N-1,N), dis(N, j) +dis(k, j) + dis(j, 1)$<br>$ dis(k, N-1) + dis(N-1, i) + dis(i, N)+dis(N, i-1) + dis(i-1, 1))$是候选答案.</p>
+</div> 
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-10-26T19:44:06+08:00"
-              content="2021-10-26">
-          10-26
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/26/PA2-3/" itemprop="url">
-            <span itemprop="name">PA2.3</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/codeforce/" rel="tag"># codeforce</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/20/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="prev" title="线性代数">
+                  <i class="fa fa-chevron-left"></i> 线性代数
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/24/%E7%AC%AC%E5%85%AD%E6%AC%A1OJ/" rel="next" title="第六次OJ">
+                  第六次OJ <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2021/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2021/page/4/">4</a><a class="extend next" rel="next" href="/archives/2021/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+
+
+
 
 </div>
   </main>
