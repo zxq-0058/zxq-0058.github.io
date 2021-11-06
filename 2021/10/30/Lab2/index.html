@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zxq-0058.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="$(1)asm_{-}add$“$add[q|l|w|b] \ A, \ B$”将$A+B$送至$A$. 12345678int64_t asm_add(int64_t a, int64_t b) &amp;#123;	__asm__(		&quot;addq %[b], %[a]\n&quot;		:[a] &quot;+r&quot;(a)		:[b] &quot;r&quot;(b)		);	ret">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lab2-内联汇编">
+<meta property="og:url" content="https://zxq-0058.github.io/2021/10/30/Lab2/index.html">
+<meta property="og:site_name" content="zxq的个人博客">
+<meta property="og:description" content="$(1)asm_{-}add$“$add[q|l|w|b] \ A, \ B$”将$A+B$送至$A$. 12345678int64_t asm_add(int64_t a, int64_t b) &amp;#123;	__asm__(		&quot;addq %[b], %[a]\n&quot;		:[a] &quot;+r&quot;(a)		:[b] &quot;r&quot;(b)		);	ret">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/10/30/Lab2/g1.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/10/30/Lab2/g2.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/10/30/Lab2/g3.png">
+<meta property="article:published_time" content="2021-10-30T04:36:37.000Z">
+<meta property="article:modified_time" content="2021-11-06T13:36:46.818Z">
+<meta property="article:author" content="Xuqin zhang">
+<meta property="article:tag" content="内联汇编">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zxq-0058.github.io/2021/10/30/Lab2/g1.png">
+
+
+<link rel="canonical" href="https://zxq-0058.github.io/2021/10/30/Lab2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2021/10/30/Lab2/","path":"2021/10/30/Lab2/","title":"Lab2-内联汇编"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Lab2-内联汇编 | zxq的个人博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zxq的个人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Balaenoptera musculus</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-asm-add"><span class="nav-number">1.</span> <span class="nav-text">$(1)asm_{-}add$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-asm-popcnt"><span class="nav-number">2.</span> <span class="nav-text">$(2)asm_{-}popcnt$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-asm-memcpy"><span class="nav-number">3.</span> <span class="nav-text">$(3)asm_{-}memcpy$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-asm-setjmp"><span class="nav-number">4.</span> <span class="nav-text">$(4)asm_{-}setjmp$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-asm-longjmp"><span class="nav-number">5.</span> <span class="nav-text">$(5)asm_{-}longjmp$</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xuqin zhang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zxq-0058.github.io/2021/10/30/Lab2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuqin zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zxq的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lab2-内联汇编
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-30 12:36:37" itemprop="dateCreated datePublished" datetime="2021-10-30T12:36:37+08:00">2021-10-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-06 21:36:46" itemprop="dateModified" datetime="2021-11-06T21:36:46+08:00">2021-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Lab/" itemprop="url" rel="index"><span itemprop="name">Lab</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="1-asm-add"><a href="#1-asm-add" class="headerlink" title="$(1)asm_{-}add$"></a>$(1)asm_{-}add$</h3><p>“$add[q|l|w|b] \ A, \ B$”将$A+B$送至$A$.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int64_t</span> <span class="title">asm_add</span><span class="params">(<span class="keyword">int64_t</span> a, <span class="keyword">int64_t</span> b)</span> </span>&#123;</span><br><span class="line">	__asm__(</span><br><span class="line">		<span class="string">&quot;addq %[b], %[a]\n&quot;</span></span><br><span class="line">		:[a] <span class="string">&quot;+r&quot;</span>(a)</span><br><span class="line">		:[b] <span class="string">&quot;r&quot;</span>(b)</span><br><span class="line">		);</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="2-asm-popcnt"><a href="#2-asm-popcnt" class="headerlink" title="$(2)asm_{-}popcnt$"></a>$(2)asm_{-}popcnt$</h3><p>$asm_{-}popcnt(x)$的作用是计算$x$的二进制中含 $1$的数目.<br>思路比较简单,$x$不断逻辑右移直到$x = 0$, 右移$shr[q|l|w|b]$指令每次右移指定位数, 比如在这里指定$shamt=1$, <font color="red">操作数的最低位将会移动到</font>$CF$, 根据$CF==1$, 我们可以决定计数器$cnt$是否加一.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">asm_popcnt</span><span class="params">(<span class="keyword">uint64_t</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">  __asm__(</span><br><span class="line">    <span class="string">&quot;L1:&quot;</span></span><br><span class="line">    <span class="string">&quot;testq %[x], %[x] #判断x是否为零, 如果为零,跳转到end\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jz end\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;shrq $1, %[x] #右移1位,将最低位送到CF\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jnc not_to_cnt #如果CF为零, cnt不加1\n&quot;</span></span><br><span class="line">    <span class="string">&quot;incl %[cnt] #cnt加1\n &quot;</span></span><br><span class="line">    <span class="string">&quot;not_to_cnt:\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jmp L1  #跳转到L1继续进行判断\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;end:\n&quot;</span></span><br><span class="line">    : [x] <span class="string">&quot;+r&quot;</span>(x), [cnt] <span class="string">&quot;+r&quot;</span>(cnt)</span><br><span class="line">    );</span><br><span class="line">  <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><div class="note info"><p>$test$指令将两个操作数相”与”,不改变原操作数,根据结果设置条件标志.比如要知道寄存器$\%eax==0$, 只需<code>testl %eax, %eax</code>, 然后再用<code>jz/jnz</code>跳转到指定的$label$<br>其它条件转移指令还有<code>jc/jnc, je/jne</code>等,可以查阅”计算机系统基础”的$Page111表3.6$</p>
+</div><br>不少指令都会影响到$Flags$,如$add, sub, cmp,$移位指令.不同指令影响的标志位不完全一样.<br>将上面的代码的<code>testq %[x], %[x]</code>改为<code>cmpq $0, %[x]</code>具有一样的效果.也可以考虑$and$指令获取$x$的最低位.<br><div class="note default"><p>考虑用内联汇编实现$int64_{-}t \ max(int64_{-}t\ x, int64_{-}t\ y)$以及$\sum_{i=1}^{100}i$</p>
+</div><br>$max$函数:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int64_t</span> <span class="title">max</span><span class="params">(<span class="keyword">int64_t</span> x, <span class="keyword">int64_t</span> y)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int64_t</span> gre = <span class="number">0</span>;</span><br><span class="line">  __asm__(</span><br><span class="line">    <span class="string">&quot;cmpq %[y], %[x] # x - y并且获得标志位信息\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jge x_greater # x &gt;= y\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;movq %[y], %[gre] #y更大\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jmp end\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;x_greater:\n&quot;</span></span><br><span class="line">    <span class="string">&quot;movq %[x], %[gre]\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;end:\n&quot;</span></span><br><span class="line"></span><br><span class="line">    : [gre] <span class="string">&quot;=r&quot;</span>(gre)</span><br><span class="line">    : [x] <span class="string">&quot;r&quot;</span>(x), [y] <span class="string">&quot;r&quot;</span>(y)</span><br><span class="line">    );</span><br><span class="line">  <span class="keyword">return</span> gre; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>$\sum_{i=1}^{100}i$函数<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sum</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  __asm__(</span><br><span class="line">    <span class="string">&quot;movl $1, %%edx #作为变量 i \n&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">&quot;l1: \n&quot;</span></span><br><span class="line">    <span class="string">&quot;cmpl $100, %%edx #跟100比较, edx - 100获得标志位\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jle l2 # edx &lt;= 100\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jmp end #edx &gt;100 直接结束\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;l2:\n&quot;</span></span><br><span class="line">    <span class="string">&quot;addl %%edx, %%eax # eax += i\n&quot;</span></span><br><span class="line">    <span class="string">&quot;incl %%edx #edx += 1\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jmp l1 #继续下一轮的判断\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;end:&quot;</span></span><br><span class="line">    : <span class="string">&quot;=a&quot;</span>(result)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;result = %d\n&quot;</span>,result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-asm-memcpy"><a href="#3-asm-memcpy" class="headerlink" title="$(3)asm_{-}memcpy$"></a>$(3)asm_{-}memcpy$</h3><p>$asm_{-}memcpy$的作用是将源地址数据复制到目标地址.<br><code>void   *asm_memcpy(void *dest, const void *src, size_t n);</code></p>
+<p>这里的$size_{-}t$指的是需要拷贝的字节数, 所以一个很自然的想法就是,用一个变量$cnt$(初始化为$n$), 每拷贝一个字节,$cnt-1$,当$cnt = 0$时,循环拷贝终止.<br><div class="note info"><p>设$byte_{-}1$的地址存放在$ESI$, $byte_{-}2$的地址存放在$EDI$<br>$movsb$的作用:将$byte_{-}2$换成$byte_{-}1$, 也即$movsb$的操作数省略可以不写,默认取$ESI(源变址寄存器), EDI(目标变址寄存器)$</p>
+</div><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">asm_memcpy</span><span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *src, <span class="keyword">size_t</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">long</span> d1, d2;</span><br><span class="line">  <span class="keyword">int</span> cnt = n;</span><br><span class="line">  __asm__ __volatile__(</span><br><span class="line">    <span class="string">&quot;LOOP:\n&quot;</span></span><br><span class="line">    <span class="string">&quot;cmpl $0, %[cnt]\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jz Final\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;movsb\n&quot;</span></span><br><span class="line">    <span class="string">&quot;dec %[cnt]\n&quot;</span></span><br><span class="line">    <span class="string">&quot;jmp LOOP\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;Final:&quot;</span></span><br><span class="line">    :<span class="string">&quot;=&amp;D&quot;</span>(d1), <span class="string">&quot;=&amp;S&quot;</span>(d2), [cnt] <span class="string">&quot;+r&quot;</span>(cnt) </span><br><span class="line">    :</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>使用$REP$前缀简化上述过程<br><div class="note info"><p>$REP$将$rcx$寄存器数值作为计数器,比如初始化$rcx=100$, 那么$rep$后面跟的指令就会执行100次, 因此初始化$rcx=n$, 然后$rep \ movsb$就可以了.</p>
+</div><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">asm_memcpy</span><span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *src, <span class="keyword">size_t</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">long</span> d1, d2, cnt = n;</span><br><span class="line">  __asm__ __volatile__(</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;rep movsb\n&quot;</span></span><br><span class="line">    :<span class="string">&quot;=&amp;D&quot;</span>(d1), <span class="string">&quot;=&amp;S&quot;</span>(d2),<span class="string">&quot;+c&quot;</span>(cnt) </span><br><span class="line">    :</span><br><span class="line">    :<span class="string">&quot;memory&quot;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<div class="note warning"><p>既然有$movsb$,那我们可以也考虑$movsq$,这样子拷贝数据不就更快了? 比方现在我们要拷贝5个$int(n=20)$,每次1个字节的话需要20次$movsb$, 如果每一次拷贝 8 个字节的话,那么只需要 2 次$movsq$和 1 次$movsb$就可以了.所以,$memcpy$还可以按以下的写法写.</p>
+</div>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">asm_memcpy</span><span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *src, <span class="keyword">size_t</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">long</span> d0, d1, d2; </span><br><span class="line">  __asm__ __volatile__(</span><br><span class="line">      <span class="string">&quot;rep ; movsq # 每次拷贝8个字节, 总共执行 n / 8次\n\t&quot;</span></span><br><span class="line"></span><br><span class="line">      <span class="string">&quot;movq %4,%%rcx #剩下的不足8个字节, 换用movsb\n\t&quot;</span></span><br><span class="line">      <span class="string">&quot;rep ; movsb # movsb需要执行(n &amp; 7)次\n\t&quot;</span></span><br><span class="line">       : </span><br><span class="line">      <span class="string">&quot;=&amp;c&quot;</span> (d0),                                                                                   </span><br><span class="line">      <span class="string">&quot;=&amp;D&quot;</span> (d1),</span><br><span class="line">      <span class="string">&quot;=&amp;S&quot;</span> (d2)</span><br><span class="line">      :<span class="string">&quot;0&quot;</span> (n &gt;&gt; <span class="number">3</span>), </span><br><span class="line">      <span class="string">&quot;g&quot;</span> (n &amp; <span class="number">7</span>), </span><br><span class="line">      <span class="string">&quot;1&quot;</span> (dest),</span><br><span class="line">      <span class="string">&quot;2&quot;</span> (src)</span><br><span class="line">      : <span class="string">&quot;memory&quot;</span></span><br><span class="line">      );  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-asm-setjmp"><a href="#4-asm-setjmp" class="headerlink" title="$(4)asm_{-}setjmp$"></a>$(4)asm_{-}setjmp$</h3><p>$asm_{-}setjmp$的作用是保存”快照”, 需要保存的信息自然是跟当前的栈帧相关的信息:<br>$rsp(栈顶),rbp(栈底), rbx, r12, r13, r14, r15$, 后面四个寄存器作为被调用者保存寄存器也应当保存.(set_jmp是被调用者)<br>$asm_{-}jmp_{-}buf$是用来存放这些寄存器的结构,它的定义如下(定义方式不唯一):<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _JLEN 7</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span><span class="keyword">uint64_t</span> _jb[_JLEN + <span class="number">1</span>];&#125;asm_jmp_buf[<span class="number">1</span>];</span><br></pre></td></tr></table></figure></p>
+<p>比如我们现在在$main$调用$asm_{-}setjmp$,在执行$call$指令之前,$main$的栈帧如下:<br><img src="/2021/10/30/Lab2/g1.png" alt="逻辑图" style="zoom:100%;"><br>执行$call$指令,首先将$asm_{-}setjmp$的返回地址压栈.然后跳转到$asm_{-}setjmp$.执行$asm_{-}setjmp$之前,栈如下:<br><img src="/2021/10/30/Lab2/g2.png" alt="逻辑图" style="zoom:100%;"></p>
+<div class="note info"><p>现在考虑$asm_{-}setjmp$究竟干了什么?!简单来说:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">asm_setjmp</span><span class="params">(asm_jmp_buf env)</span></span>&#123;</span><br><span class="line">  <span class="comment">// 注意env这个时候是一个指针</span></span><br><span class="line">  <span class="comment">// mov %rsp to env-&gt;_jb[0] 将rsp保存</span></span><br><span class="line">  <span class="comment">// mov M[%rsp] to env-&gt;_jb[1], 将返回地址保存</span></span><br><span class="line">  <span class="comment">// ... </span></span><br><span class="line">  <span class="comment">// mov $0, %rax, 直接调用setjmp的返回值是 0 </span></span><br><span class="line">  <span class="comment">// ret</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</div>
+<p>好了回归正题,我们进入$asm_{-}setjmp$后, 手里握着若干的需要保存的寄存器数据,关键就是获知上面的$env\rightarrow_{-}jb [ 0 ,1,2…]$的地址.<br>$x86-64$的过程调用约定:当函数的入口参数是整数类型或者指针类型并且小于等于6个的时候,无需用栈来传递参数,依次存放在$RDI,RSI\dots$中.这里的env传进来的只是一个指针,因此$env\rightarrow_{-}jb [ 0 ]$的地址就是$R[rdi]$,$env\rightarrow_{-}jb [ 1 ]$的地址存放在$R[rdi] + 8$中,后面类推.</p>
+<p><img src="/2021/10/30/Lab2/g3.png" alt="图3" style="zoom:100%;"></p>
+<p>代码部分实现:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">asm_setjmp</span><span class="params">(asm_jmp_buf env)</span></span>&#123;</span><br><span class="line">  __asm__ __volatile__(</span><br><span class="line">    <span class="string">&quot;movq %%rsp, (%%rdi) # 将rsp保存\n&quot;</span></span><br><span class="line">    <span class="string">&quot;movq (%%rsp), %%rdx # rdx临时存放返回地址\n&quot;</span></span><br><span class="line">    <span class="string">&quot;movq %%rdx, 8(%%rdx) \n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;TODO&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;ret\n&quot;</span></span><br><span class="line">    :</span><br><span class="line">    :</span><br><span class="line">    );</span><br><span class="line">  <span class="comment">// 之所以需要临时寄存器,是因为并没有&quot;mov 内存, 内存&quot;的指令</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-asm-longjmp"><a href="#5-asm-longjmp" class="headerlink" title="$(5)asm_{-}longjmp$"></a>$(5)asm_{-}longjmp$</h3><p>$longjmp$和$setjmp$一般是搭配使用的.<br><div class="note success"><p>$asm_{-}longjmp$做的事情:恢复”快照”,设置val, 并将自己的返回地址设置为对应的$jmp_{-}buf$当中的返回地址.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">asm_longjmp</span><span class="params">(asm_jmp_buf env, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">  <span class="comment">// mov env-&gt;_jb[0] , %rsp</span></span><br><span class="line">  <span class="comment">// mov env-&gt;_jb[1] , M[%rsp]</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// set the val as return value</span></span><br><span class="line">  <span class="comment">// ret</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</div></p>
+<p><font color="red">直接调用$setjmp$的返回值是0</font>.而$longjmp$将自己的返回地址换成$setjmp$的返回地址之后,在$main$看来跟直接调用$setjmp$并无区别,唯一不同的就是返回值.<font color="red">返回值为整型的函数的返回值一般存放在$\%rax|\%eax$中, $main$的视角下,$setjmp$的返回值是$\%eax$</font><br>根据前面讲的内容,val存放在第二个参数寄存器$\%rsi$中,因此<code>movl %esi, %eax</code>就可以解决返回值问题了.</p>
+<div class="note primary"><p>一个简单的理解方式:<br>$asm_{-}longjmp$实际上就是”窃取了”$asm_{-}setjmp$的返回地址, “伪装成”$asm_{-}setjmp$”堂而皇之”地回到调用$asm_{-}setjmp$的函数中,这个过程还通过修改$\%eax$改变了它的返回值.</p>
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96/" rel="tag"># 内联汇编</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/26/PA2-3/" rel="prev" title="PA2.3">
+                  <i class="fa fa-chevron-left"></i> PA2.3
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuqin zhang</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

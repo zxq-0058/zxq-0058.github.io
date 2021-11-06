@@ -1664,7 +1664,7 @@ pre code {
   width: 100%;
 }
 .with-love {
-  color: #f00;
+  color: ;
   display: inline-block;
   margin: 0 5px;
 }
@@ -2644,7 +2644,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #334e6b;
+  background: #37b4ff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
