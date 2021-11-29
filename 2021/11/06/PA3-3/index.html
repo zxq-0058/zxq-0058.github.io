@@ -20,26 +20,32 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zxq-0058.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="$(1)$文件系统需要阅读的重要文件123fs.h &#x2F;&#x2F;自行添加fs_XXX函数声明fs.c &#x2F;&#x2F;特别是结构体Finfo和file_table，在这个文件我们需要添加各种fs_XXX函数实体files.h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pa3.3">
+<meta property="og:title" content="PA3.3">
 <meta property="og:url" content="https://zxq-0058.github.io/2021/11/06/PA3-3/index.html">
 <meta property="og:site_name" content="zxq的个人博客">
+<meta property="og:description" content="$(1)$文件系统需要阅读的重要文件123fs.h &#x2F;&#x2F;自行添加fs_XXX函数声明fs.c &#x2F;&#x2F;特别是结构体Finfo和file_table，在这个文件我们需要添加各种fs_XXX函数实体files.h">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/11/06/PA3-3/5.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/11/06/PA3-3/h6.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/11/06/PA3-3/h7.png">
 <meta property="article:published_time" content="2021-11-06T14:58:37.000Z">
-<meta property="article:modified_time" content="2021-11-06T15:01:55.869Z">
+<meta property="article:modified_time" content="2021-11-29T00:32:55.898Z">
 <meta property="article:author" content="Xuqin zhang">
 <meta property="article:tag" content="PA3">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zxq-0058.github.io/2021/11/06/PA3-3/5.png">
 
 
 <link rel="canonical" href="https://zxq-0058.github.io/2021/11/06/PA3-3/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2021/11/06/PA3-3/","path":"2021/11/06/PA3-3/","title":"Pa3.3"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2021/11/06/PA3-3/","path":"2021/11/06/PA3-3/","title":"PA3.3"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Pa3.3 | zxq的个人博客</title>
+<title>PA3.3 | zxq的个人博客</title>
   
 
 
@@ -95,7 +101,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -108,6 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-text">$(1)$文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-loader-c"><span class="nav-text">$(1.1)loader.c$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-open-offset"><span class="nav-text">$(1.2)open_{-}offset$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-lseek"><span class="nav-text">$(1.3)lseek$:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-read"><span class="nav-text">$(1.4)read$:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-text">$(2)$系统调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-IOE"><span class="nav-text">$(3)IOE$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-serial"><span class="nav-text">$(3.1)serial$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-gettimeofday"><span class="nav-text">$(3.2)gettimeofday$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A2%8E%E7%A2%8E%E5%BF%B5"><span class="nav-text">$(1)$碎碎念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-native"><span class="nav-text">$(2)native$</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -120,18 +127,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -184,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Pa3.3
+          PA3.3
         </h1>
 
         <div class="post-meta-container">
@@ -194,10 +201,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-11-06 22:58:37 / 修改时间：23:01:55" itemprop="dateCreated datePublished" datetime="2021-11-06T22:58:37+08:00">2021-11-06</time>
+      <time title="创建时间：2021-11-06 22:58:37" itemprop="dateCreated datePublished" datetime="2021-11-06T22:58:37+08:00">2021-11-06</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-29 08:32:55" itemprop="dateModified" datetime="2021-11-29T08:32:55+08:00">2021-11-29</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -218,7 +231,35 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h2 id="1-文件系统"><a href="#1-文件系统" class="headerlink" title="$(1)$文件系统"></a>$(1)$文件系统</h2><div class="note primary"><p>需要阅读的重要文件<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.h <span class="comment">//自行添加fs_XXX函数声明</span></span><br><span class="line">fs.c <span class="comment">//特别是结构体Finfo和file_table，在这个文件我们需要添加各种fs_XXX函数实体</span></span><br><span class="line">files.h</span><br></pre></td></tr></table></figure></p>
+</div>
+<span id="more"></span>
+<h3 id="1-1-loader-c"><a href="#1-1-loader-c" class="headerlink" title="$(1.1)loader.c$"></a>$(1.1)loader.c$</h3><p>在<code>loader.c</code>将<code>fs.h</code>包含进来，将<code>fs_XXX</code>函数声明放在<code>fs.h</code>里面。<br>$Pa3.3$的$ramdisk.img$不再向之前一样只是包含一个可执行文件，因此<code>loader.c</code>需要跟<code>fs_XXX</code>协作完成在$Pa3.2$里面做的事情——将指定文件的segment加载到内存空间。<br>流程图：<br><img src="/2021/11/06/PA3-3/5.png" alt><br>有关载入$segment$和系统调用的问题这里<font color="red">暂时搁置</font>。<br><div class="note info"><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">man <span class="number">2</span> <span class="function">open</span></span><br><span class="line"><span class="function">The <span class="title">open</span><span class="params">()</span> system call opens the file specified by pathname.The file descriptor is used in</span></span><br><span class="line"><span class="function">subsequent system <span class="title">calls</span> <span class="params">(read(<span class="number">2</span>), write(<span class="number">2</span>), lseek(<span class="number">2</span>), fcntl(<span class="number">2</span>),etc.)</span> to refer to the open file.</span></span><br></pre></td></tr></table></figure>
+<p>由此可见open()函数就是为后续文件的读写操作做铺垫。<br>返回值：成功则返回文件描述符，失败则返回-1,在$Pa$里，你可以用<code>assert</code>处理失败的情况。<br>总而言之，<code>fs_open()</code>做的事情就是在<code>file_table</code>里面进行检索。</p>
+</div></p>
+<h3 id="1-2-open-offset"><a href="#1-2-open-offset" class="headerlink" title="$(1.2)open_{-}offset$"></a>$(1.2)open_{-}offset$</h3><p>将<code>open_offset</code>添加到<code>Finfo</code>结构体里。在$Pa$里，<code>open_offset</code>是每一个文件的属性，用来指示当前的读取开始位置相对于文件起始位置的偏移量。<code>fs_open</code>函数调用的时候，该值被初始化为 0。</p>
+<h3 id="1-3-lseek"><a href="#1-3-lseek" class="headerlink" title="$(1.3)lseek$:"></a>$(1.3)lseek$:</h3><div class="note warning"><p><code>size_t lseek(int fd, size_t offset, int whence);</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">man lseek</span></span><br><span class="line"><span class="function"><span class="title">lseek</span><span class="params">()</span> repositions the file offset of the open file description</span></span><br><span class="line"><span class="function">       associated with the file descriptor fd to the argument offset</span></span><br><span class="line"><span class="function">       according to the directive whence as follows:</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">       SEEK_SET</span></span><br><span class="line"><span class="function">              The file offset is <span class="built_in">set</span> to offset bytes.</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">       SEEK_CUR</span></span><br><span class="line"><span class="function">              The file offset is <span class="built_in">set</span> to its current location plus offset </span></span><br><span class="line"><span class="function">              bytes.</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">       SEEK_END</span></span><br><span class="line"><span class="function">              The file offset is <span class="built_in">set</span> to the size of the file plus offset</span></span><br><span class="line"><span class="function">              bytes.</span></span><br><span class="line"><span class="function"></span></span><br></pre></td></tr></table></figure><br><code>fs_lseek</code>所需要做的就是根据<code>whence</code>的值分分以上三种情况对<code>file_table[fd].open_offset</code> 进行修改。后面会对<code>loader.c</code>如何使用<code>fs_lseek</code>进行说明</p>
+</div>
+<h3 id="1-4-read"><a href="#1-4-read" class="headerlink" title="$(1.4)read$:"></a>$(1.4)read$:</h3><p><code>size_t read(int fd, void *buf, size_t len);</code><br><div class="note warning"><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">man read</span></span><br><span class="line"><span class="function"><span class="title">read</span><span class="params">()</span> attempts to read up to count bytes from file descriptor fd</span></span><br><span class="line"><span class="function">       into the buffer starting at buf.</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">       On files that support seeking, the read operation commences at</span></span><br><span class="line"><span class="function">       the file offset, <span class="keyword">and</span> the file offset is incremented by the number</span></span><br><span class="line"><span class="function">       of bytes read.  If the file offset is at <span class="keyword">or</span> past the end of file,</span></span><br><span class="line"><span class="function">       no bytes are read, <span class="keyword">and</span> <span class="title">read</span><span class="params">()</span> returns zero.</span></span><br></pre></td></tr></table></figure>
+<p>根据这个描述，<code>fs_read</code>在完成读取任务之后(即调用<code>ramdisk_read</code>)还需要修改<code>open_offset</code>，并且还需要进行一定的错误判断。请仔细阅读<code>read</code>的返回值说明。<code>fs_write</code>和<code>fs_read</code>类似，只是<code>fs_write</code>不需要修改<code>open_offset</code>。</p>
+</div><br>回到<code>loader.c</code>的<code>segment</code>的加载问题，<code>fs_lseek</code>和<code>fs_read</code>在<code>loader.c</code>的具体工作如下：</p>
+<ul>
+<li><code>fs_lseek()</code>将<code>open_offset</code>设置为<code>ph[i]</code>的开始位置：<br><code>fs_lseek(fd, ph[i].p_offset, SEEK_SET);</code></li>
+<li><code>fs_read()</code>将第$i$个$segment$加载：<br><code>fs_read(fd,(void *)ph[i].p_vaddr, ph[i].p_memsz);</code></li>
+<li>最后不要忘记将必要的内存空间清 0。(未初始化的全局变量为 0 )</li>
+</ul>
+<div class="note success"><p>前面将了这么多，所做的事情跟$Pa3.2$并无本质区别，甚至连加载方式都如出一辙。<br>修改<code>pro.c</code>的<code>init_proc()</code>，调用<code>naive_uload(NULL, &quot;/bin/hello&quot;);</code>， 如果运行效果跟$Pa3.2$的一样，那么说明你加载成功了。你也可以试试加载<code>dummy</code>.</p>
+</div>
+<h2 id="2-系统调用"><a href="#2-系统调用" class="headerlink" title="$(2)$系统调用"></a>$(2)$系统调用</h2><p>待更新</p>
+<h2 id="3-IOE"><a href="#3-IOE" class="headerlink" title="$(3)IOE$"></a>$(3)IOE$</h2><h3 id="3-1-serial"><a href="#3-1-serial" class="headerlink" title="$(3.1)serial$"></a>$(3.1)serial$</h3><p>在将串口抽象为文件之前，<code>SYS_write</code>将<code>stdout</code>和<code>stderr</code>和其他文件区别对待。<br>之前：<br><img src="/2021/11/06/PA3-3/h6.png" alt><br>现在：<br><img src="/2021/11/06/PA3-3/h7.png" alt></p>
+<p>这样的话，$fs_{-}write$需要添加如下代码：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(fd == FD_STDIN || fd == FD_STDOUT || fd == FD_STDERR)&#123;</span><br><span class="line">      <span class="keyword">return</span> file_table[fd].write(buf, <span class="number">0</span>, len);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><br>在<code>file_table</code>里面将<code>FD_STDOUT ，FD_STDERR</code>的<code>invalid_write</code>改为<code>serial_write</code>。至于<code>serial_write</code>的实现，直接使用<code>putch</code>就可以。</p>
+<h3 id="3-2-gettimeofday"><a href="#3-2-gettimeofday" class="headerlink" title="$(3.2)gettimeofday$"></a>$(3.2)gettimeofday$</h3><p>还记得在$Pa2.3$应用程序是怎么获取时间的吗？$am_{-}test$里的$rtc.c$作为基于$AM$运行的应用程序，它获得$update-time$的方式自然是通过$AM$提供的接口$io_{-}read$, $OS$是基于$AM$的特殊的程序，它获取$update-time$的方式跟$rtc.c$是一样的。</p>
+<div class="note primary"><p><code>man gettimeofday</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gettimeofday</span><span class="params">(struct timeval *<span class="keyword">restrict</span> tv, struct timezone *<span class="keyword">restrict</span> tz)</span></span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">timeval</span> &#123;</span></span><br><span class="line">               <span class="keyword">time_t</span>      tv_sec;     <span class="comment">/* seconds*/</span></span><br><span class="line">               <span class="keyword">suseconds_t</span> tv_usec;    <span class="comment">/* microseconds */</span></span><br><span class="line">           &#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">timezone</span> &#123;</span></span><br><span class="line">               <span class="keyword">int</span> tz_minuteswest;     <span class="comment">/* minutes west of Greenwich */</span></span><br><span class="line">               <span class="keyword">int</span> tz_dsttime;         <span class="comment">/* type of DST correction */</span></span><br><span class="line">           &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>返回值：成功为0, 失败为-1。<br>在<code>nanos-lite/../syscall.c</code>定义上述两个结构体，其中的<code>time_t,suseconds_t</code>直接用<code>long</code>代替。<br>实现如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SYS_gettimeofday</span><span class="params">(timeval *tv, timezone* tz)</span> </span>&#123;</span><br><span class="line">       tv-&gt;tv_usec = io_read(AM_TIMER_UPTIME).us; <span class="comment">//这样看来跟rtc.c是一样的嘛！！</span></span><br><span class="line">       tv-&gt;tv_sec = tv-&gt;tv_usec / <span class="number">1000000</span>;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</div>
+<p>增加测试<code>time-test</code>?, 如何写测试代码，这里就不再赘述了，值得一提的是，类似于<code>file-test</code>,我们也需要在<code>Makefile</code>里添加<code>time-test</code>，这样子<code>make update</code>之后<code>files.h</code>就会多出<code>time-test</code>， 接着<code>naive_uload(NULL, &quot;/bin/time-test&quot;);</code>就可以了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="1-碎碎念"><a href="#1-碎碎念" class="headerlink" title="$(1)$碎碎念"></a>$(1)$碎碎念</h3><p>在阅读讲义的时候，看到关键的句子一定要及时摘抄下来（留一点印象），阅读代码的时候也可以将讲义中的关键语句作为注释添加在代码中。</p>
+<h3 id="2-native"><a href="#2-native" class="headerlink" title="$(2)native$"></a>$(2)native$</h3><p>学会使用$native$进行架构无关的测试。</p>
+
     </div>
 
     
@@ -234,8 +275,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/11/06/PA3-2/" rel="prev" title="Pa3.2">
-                  <i class="fa fa-chevron-left"></i> Pa3.2
+                <a href="/2021/11/06/PA3-2/" rel="prev" title="PA3.2">
+                  <i class="fa fa-chevron-left"></i> PA3.2
                 </a>
             </div>
             <div class="post-nav-item">

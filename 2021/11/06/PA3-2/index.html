@@ -20,26 +20,32 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zxq-0058.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="程序的执行视图remark:来自袁老师的课件。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pa3.2">
+<meta property="og:title" content="PA3.2">
 <meta property="og:url" content="https://zxq-0058.github.io/2021/11/06/PA3-2/index.html">
 <meta property="og:site_name" content="zxq的个人博客">
+<meta property="og:description" content="程序的执行视图remark:来自袁老师的课件。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/11/06/PA3-2/2.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/11/06/PA3-2/1.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/11/06/PA3-2/3.png">
 <meta property="article:published_time" content="2021-11-06T14:58:32.000Z">
-<meta property="article:modified_time" content="2021-11-06T15:01:50.805Z">
+<meta property="article:modified_time" content="2021-11-29T00:33:05.614Z">
 <meta property="article:author" content="Xuqin zhang">
 <meta property="article:tag" content="PA3">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zxq-0058.github.io/2021/11/06/PA3-2/2.png">
 
 
 <link rel="canonical" href="https://zxq-0058.github.io/2021/11/06/PA3-2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2021/11/06/PA3-2/","path":"2021/11/06/PA3-2/","title":"Pa3.2"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2021/11/06/PA3-2/","path":"2021/11/06/PA3-2/","title":"PA3.2"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Pa3.2 | zxq的个人博客</title>
+<title>PA3.2 | zxq的个人博客</title>
   
 
 
@@ -95,7 +101,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -108,6 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-dummy"><span class="nav-text">$(1)dummy$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Elf-Ehdr"><span class="nav-text">$(1.1)Elf_{-}Ehdr$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Elf-Phdr"><span class="nav-text">$(1.2)Elf_{-}Phdr$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-text">(2)系统调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-nanos-lite-src-syscall-c"><span class="nav-text">$(2.1)nanos-lite&#x2F;src&#x2F;syscall.c$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-strace"><span class="nav-text">$(2.2)strace$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-write"><span class="nav-text">$(2.3)write$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-sbrk"><span class="nav-text">$(2.4)sbrk$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-hello-%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">$(3)hello$的执行流程</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -120,18 +127,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -184,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Pa3.2
+          PA3.2
         </h1>
 
         <div class="post-meta-container">
@@ -194,10 +201,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-11-06 22:58:32 / 修改时间：23:01:50" itemprop="dateCreated datePublished" datetime="2021-11-06T22:58:32+08:00">2021-11-06</time>
+      <time title="创建时间：2021-11-06 22:58:32" itemprop="dateCreated datePublished" datetime="2021-11-06T22:58:32+08:00">2021-11-06</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-29 08:33:05" itemprop="dateModified" datetime="2021-11-29T08:33:05+08:00">2021-11-29</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -218,7 +231,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>程序的执行视图<br><img src="/2021/11/06/PA3-2/2.png" alt="图一" style="zoom:60%;"><br>remark:来自袁老师的课件。<br><span id="more"></span></p>
+<h2 id="1-dummy"><a href="#1-dummy" class="headerlink" title="$(1)dummy$"></a>$(1)dummy$</h2><h3 id="1-1-Elf-Ehdr"><a href="#1-1-Elf-Ehdr" class="headerlink" title="$(1.1)Elf_{-}Ehdr$"></a>$(1.1)Elf_{-}Ehdr$</h3><p>终端执行<code>readelf -lh ramdisk.img</code>得到如下信息:<br><img src="/2021/11/06/PA3-2/1.png" alt="图一" style="zoom:80%;"><br><code>elf header</code>的$Entry\ point\ address$:<font color="red">程序执行入口
+</font><br>以及程序表头的数目等都是比较重要的信息.<br><div class="note primary"><p>使用<code>loader.c</code>前面宏定义的<code>Elf_Ehdr</code>可以将$ramdisk.img$里的程序表头读入:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Elf_Ehdr eh;</span><br><span class="line">ramdisk_read(&amp;eh, <span class="number">0</span>, <span class="keyword">sizeof</span>(eh));</span><br></pre></td></tr></table></figure><br>注意这里并没有向物理地址写入指令,我们只是在$ramdisk.img$获取了一点必要的信息.</p>
+<p><font color="red">请仔细阅读$elf.h$的<code>Elf32_Ehdr</code>和<code>Elf32_Phdr</code>两个结构体.</font><br>在获取了<code>Elf_Ehdr</code>的信息之后:<br><code>eh.e_entry</code>可以作为我们$loader.c$作为程序开始执行的地址返回给<code>naive_uload</code>;<br><code>eh.e_phentsize</code>是每一个$program\ header$的大小;<br><code>eh.e_phnum</code>是$program\ header$的数目;<br>还可以通过<code>assert(*(uint32_t *)eh.e_ident == 0x464c457f);</code>对魔数进行识别.</p>
+</div><br><div class="note info"><p>$tips$:<br>在<code>~/.bashrc</code>里面配置环境变量:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ARCH=riscv32-nemu</span><br><span class="line">export ISA=riscv32</span><br></pre></td></tr></table></figure><br>如果要用<code>native</code>,那么则需要显式指出,否则终端直接执行<code>make</code>或者<code>make run</code>就可以了.</p>
+</div></p>
+<h3 id="1-2-Elf-Phdr"><a href="#1-2-Elf-Phdr" class="headerlink" title="$(1.2)Elf_{-}Phdr$"></a>$(1.2)Elf_{-}Phdr$</h3><p>好了,现在考虑怎么向物理地址载入$segment$.<br>前面我们提到了<code>e_phnum</code>,根据该值, 定义<code>Elf_Phdr ph[eh.e_phnum];</code></p>
+<p>对于$ph[i]$, 通过<code>ramdisk_read(&amp;ph[i], eh.e_phoff + i*(eh.e_phentsize), eh.e_phentsize);</code>读取第$i$个<code>segment</code>的信息.(<font color="red">注意这里我们依旧没有向物理地址载入$segment$,我们只是获取了该$segment$的信息</font>)<br>根据$ph[i].p_{-}type$是否等于<code>PT_LOAD</code>决定是否加载.<br>如果需要加载:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ramdisk_read((<span class="keyword">void</span> *)ph[i].p_vaddr, ph[i].p_offset, ph[i].p_filesz); <span class="comment">//真正向&quot;物理地址&quot;载入segment</span></span><br><span class="line"><span class="comment">// ph[i].p_offset 代表该segment在文件中的偏移</span></span><br><span class="line"><span class="comment">// ph[i].p_filesz 代表写入的大小</span></span><br></pre></td></tr></table></figure><br>加载$segment$之后，返回$en.e_{-}entry$就可以了。<br>最后不要忘了在<code>void init_proc()</code>里调用<code>naive_uload(NULL, NULL);</code><br><div class="note warning"><p>$dummy$里面有两个需要加载的$segment$,一个是$.text, .rodata$，即只读代码段; 另一个是$.data$等的，即可读写数据段，第二个段的$memsize &gt; filesize$是因为：$.bss$节中的未初始化的全局变量在目标文件不占据磁盘空间，但是在加载到内存的时候则需要给它们分配空间。</p>
+</div></p>
+<h2 id="2-系统调用"><a href="#2-系统调用" class="headerlink" title="(2)系统调用"></a>(2)系统调用</h2><div class="note info"><p>需要阅读的重要文件:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">navy-apps/libs/libos/src/syscall.c</span><br><span class="line">abstract-machine/am/src/nemu/isa/$ISA/cte.c</span><br><span class="line">nanos-lite/src/irq.c</span><br><span class="line">nanos-lite/src/syscall.c</span><br></pre></td></tr></table></figure></p>
+</div>
+<p>$Pa3.1$对$yield$事件分发的时候，我们提到需要在<code>__am_irq_handle</code>里面根据<code>c-&gt;GPR1</code>判断，如果等于-1的话，那么event识别为$yield$.<br>当<code>c-&gt;GPR1 != -1</code>时，我们暂时将其识别为$syscall$.所以<code>__am_irq_handle</code>里面需要作出修改。</p>
+<p><code>__am_irq_handle</code>接下来会跳转到$irq.c$里面的$do_{-}event$函数，case分支添加$EVENT_{-}SYSCALL$，然后调用$do_{-}syscall()$</p>
+<h3 id="2-1-nanos-lite-src-syscall-c"><a href="#2-1-nanos-lite-src-syscall-c" class="headerlink" title="$(2.1)nanos-lite/src/syscall.c$"></a>$(2.1)nanos-lite/src/syscall.c$</h3><p>请自行添加<code>SYS_exit()</code>和<code>SYS_yield</code>函数，并通过设置<code>c-&gt;GPRx</code>作为返回值。</p>
+<h3 id="2-2-strace"><a href="#2-2-strace" class="headerlink" title="$(2.2)strace$"></a>$(2.2)strace$</h3><p>在<code>nanos-lite/src/syscall.c</code>调用$Log$函数，根据你的需求使用。</p>
+<h3 id="2-3-write"><a href="#2-3-write" class="headerlink" title="$(2.3)write$"></a>$(2.3)write$</h3><p>请仔细阅读<code>man 2 write</code>的内容，重点关注函数的参数以及返回值。</p>
+<p><code>navy-apps/libs/libos/src/syscall.c</code>的<code>_write</code>添加：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> _syscall_(SYS_write, fd, (<span class="keyword">intptr_t</span>)buf, count);</span><br></pre></td></tr></table></figure><br><div class="note primary"><p>请在<code>nanos-lite/src/syscall.c</code>添加<code>SYS_write</code>函数，并且通过case分支调用该函数，调用该函数的参数为$a[1], a[2], a[3]$即<code>c-&gt;GPR2, c-&gt;GPR3, c-&gt;GPR4</code>.返回值存储在<code>c-&gt;GPRx</code>里面(<code>c-&gt;GPRx = SYS_{-}write(...)</code>)</p>
+<p>code:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STDOUT 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STDERROR 2</span></span><br><span class="line"><span class="keyword">if</span>(fd == STDOUT || fd == STDERROR) &#123;</span><br><span class="line">    <span class="comment">// Log(&quot;Stdin or Stdout&quot;); //trace for stdin or stdout</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">char</span> *p = buf; i &lt; count; i++, p++) putch(*p);</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+</div></p>
+<h3 id="2-4-sbrk"><a href="#2-4-sbrk" class="headerlink" title="$(2.4)sbrk$"></a>$(2.4)sbrk$</h3><p>待更新</p>
+<h2 id="3-hello-的执行流程"><a href="#3-hello-的执行流程" class="headerlink" title="$(3)hello$的执行流程"></a>$(3)hello$的执行流程</h2><p><img src="/2021/11/06/PA3-2/3.png" alt><br>至于后面的<code>printf</code>也是类似的道理，只不过多考虑了<code>sbrk</code>。</p>
+
     </div>
 
     
@@ -234,13 +268,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/11/06/PA3-1/" rel="prev" title="Pa3.1">
-                  <i class="fa fa-chevron-left"></i> Pa3.1
+                <a href="/2021/11/06/PA3-1/" rel="prev" title="PA3.1">
+                  <i class="fa fa-chevron-left"></i> PA3.1
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/11/06/PA3-3/" rel="next" title="Pa3.3">
-                  Pa3.3 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/11/06/PA3-3/" rel="next" title="PA3.3">
+                  PA3.3 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
