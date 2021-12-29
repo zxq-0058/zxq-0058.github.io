@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zxq-0058.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="$(1)kcontext$的实现实现相对简单1234&#x2F;&#x2F; kcontextContext * ctx &#x3D; (Context*)(kstack.end - sizeof(Context)); &#x2F;&#x2F; 创建contextctx-&gt;mepc &#x3D; (uintptr_t)entry; &#x2F;&#x2F; 设置返回地址return ctx;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PA4.1">
+<meta property="og:url" content="https://zxq-0058.github.io/2021/12/15/PA4-1/index.html">
+<meta property="og:site_name" content="zxq的个人博客">
+<meta property="og:description" content="$(1)kcontext$的实现实现相对简单1234&#x2F;&#x2F; kcontextContext * ctx &#x3D; (Context*)(kstack.end - sizeof(Context)); &#x2F;&#x2F; 创建contextctx-&gt;mepc &#x3D; (uintptr_t)entry; &#x2F;&#x2F; 设置返回地址return ctx;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/12/15/PA4-1/1.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/12/15/PA4-1/12.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/12/15/PA4-1/13.png">
+<meta property="og:image" content="https://zxq-0058.github.io/2021/12/15/PA4-1/14.png">
+<meta property="article:published_time" content="2021-12-15T12:20:24.000Z">
+<meta property="article:modified_time" content="2021-12-29T12:37:42.163Z">
+<meta property="article:author" content="Xuqin zhang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zxq-0058.github.io/2021/12/15/PA4-1/1.png">
+
+
+<link rel="canonical" href="https://zxq-0058.github.io/2021/12/15/PA4-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2021/12/15/PA4-1/","path":"2021/12/15/PA4-1/","title":"PA4.1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>PA4.1 | zxq的个人博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zxq的个人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Balaenoptera musculus</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-kcontext-%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">$(1)kcontext$的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-am-asm-trap"><span class="nav-text">$(2)am_{-}asm_{-}trap$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-hello-fun-%E6%B7%BB%E5%8A%A0-arg"><span class="nav-text">$(3)hello_{-}fun$添加$arg$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B"><span class="nav-text">$(4)$用户进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-ucontext-%E5%92%8C-context-uload-%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">$(4.1)ucontext$和$context_{-}uload$的实现的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-text">$(4.2)$用户进程的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-text">$(@1)$参数解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-execve"><span class="nav-text">$(@2)execve$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-pal-%E2%80%94skip"><span class="nav-text">$(@2)pal —skip$</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xuqin zhang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zxq-0058.github.io/2021/12/15/PA4-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuqin zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zxq的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PA4.1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-15 20:20:24" itemprop="dateCreated datePublished" datetime="2021-12-15T20:20:24+08:00">2021-12-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-29 20:37:42" itemprop="dateModified" datetime="2021-12-29T20:37:42+08:00">2021-12-29</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="1-kcontext-的实现"><a href="#1-kcontext-的实现" class="headerlink" title="$(1)kcontext$的实现"></a>$(1)kcontext$的实现</h3><p>实现相对简单<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// kcontext</span></span><br><span class="line">Context * ctx = (Context*)(kstack.end - <span class="keyword">sizeof</span>(Context)); <span class="comment">// 创建context</span></span><br><span class="line">ctx-&gt;mepc = (<span class="keyword">uintptr_t</span>)entry; <span class="comment">// 设置返回地址</span></span><br><span class="line"><span class="keyword">return</span> ctx;</span><br></pre></td></tr></table></figure><br><span id="more"></span><br>在$loader.c$创建函数<code>context_kload</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">context_kload</span><span class="params">(PCB *pcb, <span class="keyword">void</span> (*entry)(<span class="keyword">void</span> *), <span class="keyword">void</span> *arg)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// creat a kernel stack</span></span><br><span class="line">    Area kstack;</span><br><span class="line">    kstack.start = pcb-&gt;<span class="built_in">stack</span>;</span><br><span class="line">    kstack.end = pcb-&gt;<span class="built_in">stack</span> + STACK_SIZE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// set pcb context pointer as the return value of kcontext</span></span><br><span class="line">    pcb-&gt;cp = kcontext(kstack, entry, arg); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-am-asm-trap"><a href="#2-am-asm-trap" class="headerlink" title="$(2)am_{-}asm_{-}trap$"></a>$(2)am_{-}asm_{-}trap$</h3><div class="note primary"><p>在$pa3.1$的实现$mret$指令时，我们已经对汇编代码进行解读，里面涉及的关键点就是寄存器$a_0$, 从$am_{-}asm_{-}trap$跳转到$handle$函数之前，<code>mv a0 ,sp</code>将参数地址写到$a_0$. 我们当时并没有讲到返回值的处理问题。实际上，$a_0$也是函数调用返回值的存放位置，因此从$handle$回到$am_{-}asm_{-}trap$之后，添加<code>mv sp a0</code>就可以了。</p>
+</div>
+<h3 id="3-hello-fun-添加-arg"><a href="#3-hello-fun-添加-arg" class="headerlink" title="$(3)hello_{-}fun$添加$arg$"></a>$(3)hello_{-}fun$添加$arg$</h3><div class="note info"><p>$context$的若干$GPR$的作用在$pa3$里面已经很清楚了，此处做一个总结：</p>
+<ul>
+<li>$GPR1\ gpr[17]\ a7$  $type$</li>
+<li>$GPR2\ gpr[10]\ a0$  第一个参数</li>
+<li>$GPR[3|4]\ gpr[11|12]\ a[11|12]$  第二、三个参数</li>
+<li>$GPRX\ gpr[10]\ a0$  返回值</li>
+</ul>
+</div>
+<p>作如下的代码修改：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// kcontext</span></span><br><span class="line">  <span class="keyword">if</span>(arg != <span class="literal">NULL</span>) &#123;</span><br><span class="line">    ctx-&gt;GPR2 = (<span class="keyword">uintptr_t</span>)arg;</span><br><span class="line">  &#125;<span class="comment">//传参,记得判断！NULL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// init_proc</span></span><br><span class="line">context_kload(&amp;pcb[<span class="number">0</span>], hello_fun, <span class="string">&quot;THe 1st&quot;</span>);</span><br><span class="line">context_kload(&amp;pcb[<span class="number">1</span>], hello_fun, <span class="string">&quot;THe 2st&quot;</span>);</span><br></pre></td></tr></table></figure><br>实现效果：<br><img src="/2021/12/15/PA4-1/1.png" alt></p>
+<div class="note warning"><p>尝试将$nanos-lite/src/main.c$的$yield$注释掉，看看会出现什么现象。<br>上述代码只是将$hello_{-}fun$的入口地址和参数放在内核区域，并没有马上跳转到$hello_fun$流程如下：<br><img src="/2021/12/15/PA4-1/12.png" alt></p>
+</div>
+<h3 id="4-用户进程"><a href="#4-用户进程" class="headerlink" title="$(4)$用户进程"></a>$(4)$用户进程</h3><h4 id="4-1-ucontext-和-context-uload-的实现的实现"><a href="#4-1-ucontext-和-context-uload-的实现的实现" class="headerlink" title="$(4.1)ucontext$和$context_{-}uload$的实现的实现"></a>$(4.1)ucontext$和$context_{-}uload$的实现的实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Context *<span class="title">ucontext</span><span class="params">(AddrSpace *as, Area kstack, <span class="keyword">void</span> *entry)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// almost the same as kcontext</span></span><br><span class="line">  Context * ctx = (Context*)(kstack.end - <span class="keyword">sizeof</span>(Context));</span><br><span class="line">  ctx-&gt;mepc = (<span class="keyword">uintptr_t</span>)entry;</span><br><span class="line">  assert(ctx != <span class="literal">NULL</span>);</span><br><span class="line">  <span class="keyword">return</span> ctx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">context_uload</span><span class="params">(PCB *pcb, <span class="keyword">const</span> <span class="keyword">char</span> *filename, <span class="keyword">char</span> *<span class="keyword">const</span> argv[], <span class="keyword">char</span> *<span class="keyword">const</span> envp[])</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// to get the app entry</span></span><br><span class="line">  <span class="keyword">uintptr_t</span> entry = loader(pcb, filename);</span><br><span class="line">  <span class="comment">// 用内核区保存上下文结构体，入口保存在内核区</span></span><br><span class="line">  Area kstack;</span><br><span class="line">  kstack.start = pcb-&gt;<span class="built_in">stack</span>;</span><br><span class="line">  kstack.end = pcb-&gt;<span class="built_in">stack</span> + STACK_SIZE; </span><br><span class="line"></span><br><span class="line">  pcb-&gt;cp = ucontext(<span class="literal">NULL</span>, kstack, (<span class="keyword">void</span>*)entry);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 把栈顶位置设置到GPRx中</span></span><br><span class="line">  <span class="keyword">void</span>* Ustack_Top = heap.end;</span><br><span class="line">  pcb-&gt;cp-&gt;GPRx = (<span class="keyword">uintptr_t</span>)(Ustack_Top);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p><code>_start</code>修改?!<br>Nanos-lite把栈顶位置设置到GPRx中, 上述代码已经实现了.但是这个返回值要怎么处理呢?<br>查看$crt0/start$的$riscv32.S$, 在跳转到<code>call_main</code>之前添加<code>mv sp, a0</code>就可以将返回值设置到栈指针寄存器<code>sp</code>了.<br>让我们再来梳理一下流程:<br><img src="/2021/12/15/PA4-1/13.png" alt><br>这样一来,我们就可以看到二者”同时运行”的状态了.</p>
+</div>
+<h4 id="4-2-用户进程的参数"><a href="#4-2-用户进程的参数" class="headerlink" title="$(4.2)$用户进程的参数"></a>$(4.2)$用户进程的参数</h4><h5 id="1-参数解析"><a href="#1-参数解析" class="headerlink" title="$(@1)$参数解析"></a>$(@1)$参数解析</h5><div class="note info"><p><code>char ** argc | char * argv[]</code><br>参考:<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/29338321/how-initialize-char-const-argv-in-c">https://stackoverflow.com/questions/29338321/how-initialize-char-const-argv-in-c</a><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// init_proc()</span></span><br><span class="line">  <span class="keyword">char</span>* <span class="keyword">const</span> argv[] = &#123;<span class="string">&quot;--skip&quot;</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line">  <span class="keyword">char</span>* <span class="keyword">const</span> envp[] = &#123; <span class="literal">NULL</span>&#125;;</span><br><span class="line">  context_uload(&amp;pcb[<span class="number">1</span>], <span class="string">&quot;/bin/pal&quot;</span>, argv, envp);</span><br></pre></td></tr></table></figure></p>
+</div>
+<p>需要认真理解:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">|               |</span><br><span class="line">+---------------+ &lt;---- ustack.end</span><br><span class="line">|  Unspecified  |</span><br><span class="line">+---------------+</span><br><span class="line">|               | &lt;----------+</span><br><span class="line">|    string     | &lt;--------+ |</span><br><span class="line">|     area      | &lt;------+ | |</span><br><span class="line">|               | &lt;----+ | | |</span><br><span class="line">|               | &lt;--+ | | | |</span><br><span class="line">+---------------+    | | | | |</span><br><span class="line">|  Unspecified  |    | | | | |</span><br><span class="line">+---------------+    | | | | |</span><br><span class="line">|     NULL      |    | | | | |</span><br><span class="line">+---------------+    | | | | |</span><br><span class="line">|    ......     |    | | | | |</span><br><span class="line">+---------------+    | | | | |</span><br><span class="line">|    envp[1]    | ---+ | | | |</span><br><span class="line">+---------------+      | | | |</span><br><span class="line">|    envp[0]    | -----+ | | |</span><br><span class="line">+---------------+        | | |</span><br><span class="line">|     NULL      |        | | |</span><br><span class="line">+---------------+        | | |</span><br><span class="line">| argv[argc-1]  | -------+ | |</span><br><span class="line">+---------------+          | |</span><br><span class="line">|    ......     |          | |</span><br><span class="line">+---------------+          | |</span><br><span class="line">|    argv[1]    | ---------+ |</span><br><span class="line">+---------------+            |</span><br><span class="line">|    argv[0]    | -----------+</span><br><span class="line">+---------------+</span><br><span class="line">|      argc     |</span><br><span class="line">+---------------+ &lt;---- cp-&gt;GPRx</span><br><span class="line">|               |</span><br></pre></td></tr></table></figure><br>解析参数:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">context_uload</span><span class="params">(PCB *pcb, <span class="keyword">const</span> <span class="keyword">char</span> *filename, <span class="keyword">char</span> *<span class="keyword">const</span> argv[], <span class="keyword">char</span> *<span class="keyword">const</span> envp[])</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// to get the app entry</span></span><br><span class="line">  <span class="keyword">uintptr_t</span> entry = loader(pcb, filename);</span><br><span class="line">  <span class="comment">// 用内核区保存上下文结构体，入口保存在内核区</span></span><br><span class="line">  Area kstack;</span><br><span class="line">  kstack.start = pcb-&gt;<span class="built_in">stack</span>;</span><br><span class="line">  kstack.end = pcb-&gt;<span class="built_in">stack</span> + STACK_SIZE; </span><br><span class="line"></span><br><span class="line">  pcb-&gt;cp = ucontext(<span class="literal">NULL</span>, kstack, (<span class="keyword">void</span>*)entry);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// initialize stack end by new_page</span></span><br><span class="line">  <span class="keyword">void</span>* Ustack_end = new_page(<span class="number">8</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 字符串区域的开始地址, 可以自己决定String_Area_Size,比如512,1024</span></span><br><span class="line">  <span class="keyword">uintptr_t</span> String_Area_Start = (<span class="keyword">uintptr_t</span>)(Ustack_end - String_Area_Size);</span><br><span class="line">  <span class="keyword">int</span> offset = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// to get the value of argc and store it directly at Addr : heap.end - Usr_Stack_Size</span></span><br><span class="line">  <span class="keyword">int</span> * argc = (Ustack_end - Usr_Stack_Size);</span><br><span class="line">  *argc = <span class="number">0</span>; <span class="comment">//initialization</span></span><br><span class="line">  <span class="keyword">while</span>(argv[*argc] != <span class="literal">NULL</span>)(*argc)++;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">// to load the arg vector, recall that argv_0, argv_1 ... are char *</span></span><br><span class="line">  <span class="comment">// argv_0 在argc的上面一个单元位置</span></span><br><span class="line">  <span class="keyword">uintptr_t</span> * argv_0 = Ustack_end - Usr_Stack_Size + <span class="keyword">sizeof</span>(<span class="keyword">uintptr_t</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">int</span> One_String_Size = <span class="number">16</span>; <span class="comment">// decide by you own</span></span><br><span class="line">  <span class="keyword">if</span>(argv[<span class="number">0</span>] == <span class="literal">NULL</span>)*argv_0 = (<span class="keyword">uintptr_t</span>)<span class="literal">NULL</span>; <span class="comment">// empty string </span></span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; *argc; i++) &#123;</span><br><span class="line">      *(argv_0 + i) = String_Area_Start + offset; <span class="comment">// 让argv_i指向对应的字符串的开始位置</span></span><br><span class="line">      <span class="built_in">strcpy</span>((<span class="keyword">char</span> *)(String_Area_Start + offset), argv[i]); <span class="comment">// 将argc[i]复制到指定区域</span></span><br><span class="line">      offset += One_String_Size;   </span><br><span class="line">    &#125;</span><br><span class="line">    *(argv_0 + *argc) = (<span class="keyword">uintptr_t</span>)<span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// TODO : envp is just the same</span></span><br><span class="line">  Log(<span class="string">&quot;Successfully load the arguments!&quot;</span>);</span><br><span class="line">  pcb-&gt;cp-&gt;GPRx = (<span class="keyword">uintptr_t</span>)(Ustack_end - Usr_Stack_Size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<div class="note info"><p>修改Navy中_start的代码, 把argc的地址作为参数传递给call_main()?!<br>我们已经不止一次提到参数传递了,对于$riscv32$, $a_0$一方面作为context的返回值$GPRx$, 另一方面又可以直接作为参数(当只有一个参数时),因此<code>riscv32.S</code>的<code>_start</code>并不需要修改,或者你可以认为<code>mv a0 a0</code>.<br>至于在<code>call_main</code>解析参数,这并没有什么难的.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> argc = *args;</span><br><span class="line"></span><br><span class="line"><span class="comment">// to get the arg vector</span></span><br><span class="line"><span class="keyword">char</span> *argv[argc];</span><br><span class="line"><span class="keyword">uintptr_t</span> * argv_0 = args;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= argc; i++) &#123;</span><br><span class="line">    argv[i - <span class="number">1</span>] = (<span class="keyword">char</span>*)(* (argv_0 + i));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Simply ignore the envp since it is useless</span></span><br><span class="line"><span class="keyword">char</span> *empty[] = &#123;<span class="literal">NULL</span>&#125;;</span><br><span class="line">environ = empty;</span><br><span class="line"><span class="built_in">exit</span>(main(argc, argv, empty));</span><br><span class="line">assert(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+</div>
+<h5 id="2-execve"><a href="#2-execve" class="headerlink" title="$(@2)execve$"></a>$(@2)execve$</h5><p>$nanos-lite$的<code>Sys_execve</code>,实现比较简单.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果它执行成功, 就不会返回到当前程序中</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Sys_execve</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *filename, <span class="keyword">char</span> *<span class="keyword">const</span> argv [], <span class="keyword">char</span> *<span class="keyword">const</span> envp[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过fs_open()来进行检查.</span></span><br><span class="line">  <span class="comment">// 如果需要打开的文件不存在, 就返回一个错误的值, 此时SYS_execve返回-2</span></span><br><span class="line">  <span class="keyword">int</span> fd = fs_open(filename, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span>(fd == <span class="number">-1</span>) &#123;</span><br><span class="line">    Log(<span class="string">&quot;No such file or directory: %s&quot;</span>, filename);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将current的context信息修改</span></span><br><span class="line">  context_uload(current, filename, argv, envp);</span><br><span class="line">  switch_boot_pcb();</span><br><span class="line">  yield();<span class="comment">// 进程调度</span></span><br><span class="line">  panic(<span class="string">&quot;Should not reach here!&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><div class="note success"><p>请仔细阅读<code>exec-test</code>的测试代码,解释为什么<code>init_proc</code>的调用如下:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>* <span class="keyword">const</span> argv[] = &#123;<span class="string">&quot;/bin/exec-test&quot;</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line"><span class="keyword">char</span>* <span class="keyword">const</span> envp[] = &#123; <span class="literal">NULL</span>&#125;;</span><br><span class="line">context_uload(&amp;pcb[<span class="number">1</span>], <span class="string">&quot;/bin/exec-test&quot;</span>, argv, envp);</span><br></pre></td></tr></table></figure><br>最后,测试成功的图片如下:<br><img src="/2021/12/15/PA4-1/14.png" alt></p>
+</div></p>
+<h5 id="2-pal-—skip"><a href="#2-pal-—skip" class="headerlink" title="$(@2)pal —skip$"></a>$(@2)pal —skip$</h5><p>在<code>builtin-sh.cpp</code>的cmd处理函数添加处理代码:<br>这里简化处理了,只是考虑了只有一个参数的情况.即使是多个参数,也是类似的处理.<br>至于在pal的main函数怎么处理<code>--skip</code>参数,这个就很简单了.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sh_handle_cmd</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *cmd)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">char</span> pathname[<span class="number">16</span>], argv_0[<span class="number">16</span>];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// to get the pathname | filename</span></span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>; </span><br><span class="line">  <span class="keyword">for</span>(; i &lt; <span class="built_in">strlen</span>(cmd); i++) &#123;</span><br><span class="line">     <span class="keyword">if</span>(cmd[i] != <span class="string">&#x27; &#x27;</span>)pathname[i] = cmd[i];</span><br><span class="line">     <span class="keyword">else</span> &#123;</span><br><span class="line">        pathname[i] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">        <span class="keyword">while</span>(cmd[i] == <span class="string">&#x27; &#x27;</span> &amp;&amp; i &lt; <span class="built_in">strlen</span>(cmd))i++;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// to get the argv[0]</span></span><br><span class="line">  <span class="keyword">int</span> break_i = i;</span><br><span class="line">  <span class="keyword">for</span>(; i &lt; <span class="built_in">strlen</span>(cmd) - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    argv_0[i - break_i]= cmd[i];</span><br><span class="line">  &#125;</span><br><span class="line">  argv_0[i - break_i] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">char</span> * argv[Max_Arg_Nr] = &#123;argv_0, <span class="literal">NULL</span>&#125;;</span><br><span class="line">  execvp(pathname, argv);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><div class="note warning"><p>使用了<code>execvp</code>的前提是正确设置env参数,请在<code>builtin-sh.cpp</code>的<code>builtin_sh_run</code>函数的<code>while</code>循环之前添加:<br><code>setenv(&quot;PATH&quot;, &quot;/usr/bin:/bin&quot;, 0);</code></p>
+</div><br><div class="note primary"><p>尽管能够满足最低要求了,但还是感觉上面的实现不太满意?!<br>这里给出一份实现更加优美的代码:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> split[<span class="number">2</span>] = <span class="string">&quot; &quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sh_handle_cmd</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *cmd)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// since cmd is end with &#x27;\n&#x27;, we have a pretreatment</span></span><br><span class="line">  <span class="keyword">char</span> cmd_cpy[<span class="number">32</span>],pathname[<span class="number">16</span>];</span><br><span class="line">  <span class="built_in">strcpy</span>(cmd_cpy, cmd);</span><br><span class="line">  cmd_cpy[<span class="built_in">strlen</span>(cmd) - <span class="number">1</span>] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> argc = <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">char</span>* argv[Max_Arg_Nr] = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">char</span> *token;</span><br><span class="line">  token = strtok(cmd_cpy, split);</span><br><span class="line">  <span class="keyword">while</span>(token != <span class="literal">NULL</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(argc == <span class="number">-1</span>)&#123;</span><br><span class="line">      <span class="built_in">strcpy</span>(pathname, token);</span><br><span class="line">      argc = <span class="number">0</span>;</span><br><span class="line">      token = strtok(<span class="literal">NULL</span>, split);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      argv[argc++] = token;</span><br><span class="line">      token = strtok(<span class="literal">NULL</span>, split);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  execvp(pathname, argv);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</div></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/07/%E7%AC%AC%E5%8D%81%E6%AC%A1OJ/" rel="prev" title="第十次OJ">
+                  <i class="fa fa-chevron-left"></i> 第十次OJ
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuqin zhang</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
