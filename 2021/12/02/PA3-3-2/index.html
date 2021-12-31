@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zxq-0058.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="$(1)NSlider (NJU\ Slider)$本小节的重要参考网站:https:&#x2F;&#x2F;wiki.libsdl.org&#x2F;  $(1.1)SDL_{-}UpdateRect$$pdf$的生成：将$PA2$的幻灯片截图得到两种$png$，然后再转$pdf$就可以了。脚本运行出错的解决方法：$overstackflow$上面有解答.  将nslider添加到$Makefile$里的$APP$变量。vo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PA3-3(2)">
+<meta property="og:url" content="https://zxq-0058.github.io/2021/12/02/PA3-3-2/index.html">
+<meta property="og:site_name" content="zxq的个人博客">
+<meta property="og:description" content="$(1)NSlider (NJU\ Slider)$本小节的重要参考网站:https:&#x2F;&#x2F;wiki.libsdl.org&#x2F;  $(1.1)SDL_{-}UpdateRect$$pdf$的生成：将$PA2$的幻灯片截图得到两种$png$，然后再转$pdf$就可以了。脚本运行出错的解决方法：$overstackflow$上面有解答.  将nslider添加到$Makefile$里的$APP$变量。vo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-02T06:12:13.000Z">
+<meta property="article:modified_time" content="2021-12-31T08:01:14.637Z">
+<meta property="article:author" content="Xuqin zhang">
+<meta property="article:tag" content="PA3">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zxq-0058.github.io/2021/12/02/PA3-3-2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2021/12/02/PA3-3-2/","path":"2021/12/02/PA3-3-2/","title":"PA3-3(2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>PA3-3(2) | zxq的个人博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zxq的个人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Balaenoptera musculus</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-NSlider-NJU-Slider"><span class="nav-text">$(1)NSlider (NJU\ Slider)$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-SDL-UpdateRect"><span class="nav-text">$(1.1)SDL_{-}UpdateRect$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-SDL-WaitEvent"><span class="nav-text">$(1.2)SDL_{-}WaitEvent$</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MENU"><span class="nav-text">$(2)MENU$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-SDL-FillRect"><span class="nav-text">$(2.1)SDL_{-}FillRect$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-SDL-BlitSurface"><span class="nav-text">$(2.2)SDL_{-}BlitSurface$</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Flappy-Bird"><span class="nav-text">$(3)Flappy\ Bird$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Pal"><span class="nav-text">$(4)Pal$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-NTerm"><span class="nav-text">$(5)NTerm$</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xuqin zhang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zxq-0058.github.io/2021/12/02/PA3-3-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuqin zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zxq的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PA3-3(2)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-02 14:12:13" itemprop="dateCreated datePublished" datetime="2021-12-02T14:12:13+08:00">2021-12-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-31 16:01:14" itemprop="dateModified" datetime="2021-12-31T16:01:14+08:00">2021-12-31</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/PA/" itemprop="url" rel="index"><span itemprop="name">PA</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="1-NSlider-NJU-Slider"><a href="#1-NSlider-NJU-Slider" class="headerlink" title="$(1)NSlider (NJU\ Slider)$"></a>$(1)NSlider (NJU\ Slider)$</h3><div class="note danger"><p>本小节的重要参考网站:<a target="_blank" rel="noopener" href="https://wiki.libsdl.org/">https://wiki.libsdl.org/</a></p>
+</div>
+<h4 id="1-1-SDL-UpdateRect"><a href="#1-1-SDL-UpdateRect" class="headerlink" title="$(1.1)SDL_{-}UpdateRect$"></a>$(1.1)SDL_{-}UpdateRect$</h4><div class="note info"><p>$pdf$的生成：将$PA2$的幻灯片截图得到两种$png$，然后再转$pdf$就可以了。<br>脚本运行出错的解决方法：$overstackflow$上面有解答.</p>
+</div>
+<p>将<code>nslider</code>添加到$Makefile$里的$APP$变量。<br><div class="note primary"><p><code>void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h)</code>的作用是将画布 s 渲染到系统屏幕上，画布的左上角坐标为$(x, y)$,<br>目前直接调用<code>NDL_DrawRect(s-&gt;pixels, x, y, w, h);</code>就可以了,不过需要特判<code>w = 0 &amp;&amp; h = 0</code>的情况,将二者改为<code>s-&gt;w</code>和<code>s-&gt;h</code>.</p>
+</div><br><span id="more"></span><br><div class="note warning"><p>前面我们提到映射的问题,这里将<code>NDL_DrawRect</code>作如下修改:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; i++) &#123;</span><br><span class="line">   lseek(fbdev, <span class="keyword">sizeof</span>(<span class="keyword">uint32_t</span>) * (x + (y + i) * screen_w), SEEK_SET);</span><br><span class="line">   write(fbdev, pixels + i * w , <span class="keyword">sizeof</span>(<span class="keyword">uint32_t</span>) * w);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><br><code>offset</code>是如何映射的呢?这显然不难理解 :<br>$x = offset \% screen_{-}w,\ \ y = offset / screen_{-}w$.<br>只是在文件中,需要考虑<code>sizeof(uint32_t)</code>,在<code>device.c</code>里面注意解析映射的正确性.<br>映射法则对应的<code>fb_write</code>的写法:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">size_t</span> <span class="title">fb_write</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> offset, <span class="keyword">size_t</span> len)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 用于把buf中的len字节写到屏幕上offset处. </span></span><br><span class="line">  <span class="comment">// 先从offset计算出屏幕上的坐标,然后调用IOE来进行绘图. </span></span><br><span class="line">  <span class="keyword">int</span> real_len = len / <span class="keyword">sizeof</span>(<span class="keyword">uint32_t</span>);</span><br><span class="line">  <span class="keyword">int</span> real_offset = offset / <span class="keyword">sizeof</span>(<span class="keyword">uint32_t</span>);</span><br><span class="line">  <span class="keyword">int</span> screen_w = <span class="number">0</span>, screen_h = <span class="number">0</span>;</span><br><span class="line">  screen_wh(&amp;screen_w, &amp;screen_h);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> *pixels = (<span class="keyword">void</span> *)buf;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> start_y = real_offset / screen_w, start_x = real_offset % screen_w;</span><br><span class="line"></span><br><span class="line">  io_write(AM_GPU_FBDRAW, start_x, start_y , pixels, real_len, <span class="number">1</span>, <span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">return</span> real_len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</div></p>
+<h4 id="1-2-SDL-WaitEvent"><a href="#1-2-SDL-WaitEvent" class="headerlink" title="$(1.2)SDL_{-}WaitEvent$"></a>$(1.2)SDL_{-}WaitEvent$</h4><p>用于<strong>等待</strong>一个事件. 你需要将NDL中提供的事件封装成SDL事件返回给应用程序.<br>实现逻辑相对简单,既然是等待,注意用$while$判断.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SDL_WaitEvent</span><span class="params">(SDL_Event *event)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">char</span> buf[<span class="number">64</span>], k_state[<span class="number">4</span>], k_code[<span class="number">16</span>];</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!NDL_PollEvent(buf, <span class="keyword">sizeof</span>(buf)))<span class="keyword">continue</span>;</span><br><span class="line">    TODO();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-MENU"><a href="#2-MENU" class="headerlink" title="$(2)MENU$"></a>$(2)MENU$</h3><h4 id="2-1-SDL-FillRect"><a href="#2-1-SDL-FillRect" class="headerlink" title="$(2.1)SDL_{-}FillRect$"></a>$(2.1)SDL_{-}FillRect$</h4><p>$TODO()$</p>
+<h4 id="2-2-SDL-BlitSurface"><a href="#2-2-SDL-BlitSurface" class="headerlink" title="$(2.2)SDL_{-}BlitSurface$"></a>$(2.2)SDL_{-}BlitSurface$</h4><div class="note danger"><p>From wiki:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The width <span class="keyword">and</span> height in srcrect determine the size of the copied rectangle.</span><br><span class="line"><span class="function">Only the position is used in the <span class="title">dstrect</span> <span class="params">(the width <span class="keyword">and</span> height are ignored)</span>.</span></span><br><span class="line"><span class="function">Blits with negative dstrect coordinates will be clipped properly.</span></span><br><span class="line"><span class="function">If srcrect is <span class="literal">NULL</span>, the entire surface is copied. </span></span><br><span class="line"><span class="function">If dstrect is <span class="literal">NULL</span>, then the destination <span class="title">position</span> <span class="params">(upper left corner)</span> <span class="title">is</span> <span class="params">(<span class="number">0</span>, <span class="number">0</span>)</span>.</span></span><br></pre></td></tr></table></figure></p>
+</div>
+<p>据此不难写出该函数的代码:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> wid , height, src_x, src_y, dst_x, dst_y;</span><br><span class="line"></span><br><span class="line"><span class="comment">// part(1): check the srcrect</span></span><br><span class="line"><span class="keyword">if</span>(srcrect == <span class="literal">NULL</span>)&#123; wid = src-&gt;w; height = src-&gt;h; src_x = src_y = <span class="number">0</span>;&#125;</span><br><span class="line"><span class="keyword">else</span> &#123; wid = srcrect-&gt;w; height = srcrect-&gt;h; src_x = srcrect-&gt;x; src_y = srcrect-&gt;y; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// part(2): check the dstrect</span></span><br><span class="line"><span class="keyword">if</span>(dstrect == <span class="literal">NULL</span>)&#123; dst_x = dst_y = <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">else</span> &#123; dst_x = dstrect-&gt;x; dst_y = dstrect-&gt;y; &#125;  </span><br><span class="line"></span><br><span class="line"><span class="comment">// part(3): format</span></span><br><span class="line"><span class="keyword">if</span>(src-&gt;format-&gt;BitsPerPixel == <span class="number">32</span>) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">uint32_t</span>* src_pixels = (<span class="keyword">uint32_t</span>*)src-&gt;pixels;</span><br><span class="line">  <span class="keyword">uint32_t</span>* dst_pixels = (<span class="keyword">uint32_t</span>*)dst-&gt;pixels;  </span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; wid; j++)</span><br><span class="line">    	<span class="comment">// 二维化一维</span></span><br><span class="line">      dst_pixels[(i + dst_y) * dst-&gt;w + j + dst_x] = src_pixels[( i + src_y )*src-&gt;w + j + src_x];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-Flappy-Bird"><a href="#3-Flappy-Bird" class="headerlink" title="$(3)Flappy\ Bird$"></a>$(3)Flappy\ Bird$</h3><p>$TODO()$</p>
+<h3 id="4-Pal"><a href="#4-Pal" class="headerlink" title="$(4)Pal$"></a>$(4)Pal$</h3><div class="note danger"><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UpdateRect</span></span><br><span class="line"><span class="keyword">if</span>(s-&gt;format-&gt;BitsPerPixel == <span class="number">8</span>) &#123;</span><br><span class="line">    </span><br><span class="line">    SDL_Palette * palette = s-&gt;format-&gt;palette; <span class="comment">// 取色板</span></span><br><span class="line">    SDL_Color color;</span><br><span class="line">    <span class="keyword">uint32_t</span>* pixels = <span class="built_in">malloc</span>(w * <span class="keyword">sizeof</span>(<span class="keyword">uint32_t</span>)); <span class="comment">//存放某一行的颜色</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每次只是画一行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; w; j++) &#123;</span><br><span class="line">        TODO();</span><br><span class="line">      	&#125;</span><br><span class="line">	    ConvertPixelsARGB_ABGR(pixels, pixels, w); <span class="comment">//将该行的颜色进行正确排列,因为从取色板中取出的颜色顺序需要处理</span></span><br><span class="line">	    NDL_DrawRect(pixels, x, y + i , w, h); </span><br><span class="line">  	&#125;</span><br></pre></td></tr></table></figure>
+<p>等等,<code>malloc</code>之后没有<code>free</code>?em这个$bug$…<br>至于<code>SDL_BlitSurface</code>和<code>SDL_FillRect</code>的<code>src-&gt;format-&gt;BitsPerPixel = 8</code>的情况,就交由你自己处理好啦.</p>
+</div>
+<div class="note info"><p>$pal$确实不是很好调试.即使是正确写完sdl的三个函数,游戏运行时依旧会”莫名其妙”地越界.<br>请尝试在游戏源码里面插入<code>printf</code>,找到越界的原因.这一部分还是挺有意思的,请尽量自己动手,如果实在想不出,有关$pal$的剩余部分,请移步至$PA4.1$.</p>
+</div>
+<h3 id="5-NTerm"><a href="#5-NTerm" class="headerlink" title="$(5)NTerm$"></a>$(5)NTerm$</h3><p>$nterm$完善似乎没什么困难的,在$Pa4.1$中,我们稍微做了一点补充.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PA3/" rel="tag"># PA3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/06/PA3-3/" rel="prev" title="PA3.3(1)">
+                  <i class="fa fa-chevron-left"></i> PA3.3(1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/04/Lab4/" rel="next" title="Lab4">
+                  Lab4 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuqin zhang</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

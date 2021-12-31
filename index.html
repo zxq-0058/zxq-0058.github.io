@@ -117,7 +117,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -367,7 +367,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-29 21:11:03" itemprop="dateModified" datetime="2021-12-29T21:11:03+08:00">2021-12-29</time>
+        <time title="修改时间：2021-12-31 15:39:22" itemprop="dateModified" datetime="2021-12-31T15:39:22+08:00">2021-12-31</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -547,7 +547,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-30 16:32:33" itemprop="dateModified" datetime="2021-12-30T16:32:33+08:00">2021-12-30</time>
+        <time title="修改时间：2021-12-31 16:35:32" itemprop="dateModified" datetime="2021-12-31T16:35:32+08:00">2021-12-31</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -569,12 +569,105 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-变量声明和初始化"><a href="#1-变量声明和初始化" class="headerlink" title="$(1)$变量声明和初始化"></a>$(1)$变量声明和初始化</h3><p>每一行的结构:<br><img src="/2021/12/04/Lab4/23.png" alt><br><div class="note primary"><p>$Cache$的总行数为$Cache$的数据容量除一个$BLOCK$的大小，比如$SIZE=16KB = 2^{14}B$,$BLOCK_{-}SIZE=64B$, 那么总的行数为$2^{8}$行。对于4路组连而言，每一组有4行， 因此总的组数为 $2^6$,也即<code>GROUP_WIDTH = 6; GROUP_SIZE = 1 &lt;&lt; 6;</code></p>
+          <p>实现<strong>组相联</strong>,<strong>写回</strong>的$cache$.</p>
+<h3 id="1-变量声明和初始化"><a href="#1-变量声明和初始化" class="headerlink" title="$(1)$变量声明和初始化"></a>$(1)$变量声明和初始化</h3><p>每一行的结构:<br><img src="/2021/12/04/Lab4/23.png" alt><br><div class="note primary"><p>$Cache$的总行数为$Cache$的数据容量除以一个$BLOCK$的大小，比如$SIZE=16KB = 2^{14}B$,$BLOCK_{-}SIZE=64B$,<br>那么总的行数为$2^{8}$行。对于4路组连而言，每一组有4行， 因此总的组数为 $2^6$,也即<code>GROUP_WIDTH = 6; GROUP_SIZE = 1 &lt;&lt; 6;</code></p>
 <p>对于每一个主存地址，其划分如下：<br><img src="/2021/12/04/Lab4/24.png" alt><br>其中块号由tag和组号组成.</p>
 </div><br></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/12/04/Lab4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zxq-0058.github.io/2021/12/02/PA3-3-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuqin zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zxq的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/02/PA3-3-2/" class="post-title-link" itemprop="url">PA3-3(2)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-02 14:12:13" itemprop="dateCreated datePublished" datetime="2021-12-02T14:12:13+08:00">2021-12-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-31 16:01:14" itemprop="dateModified" datetime="2021-12-31T16:01:14+08:00">2021-12-31</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/PA/" itemprop="url" rel="index"><span itemprop="name">PA</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-NSlider-NJU-Slider"><a href="#1-NSlider-NJU-Slider" class="headerlink" title="$(1)NSlider (NJU\ Slider)$"></a>$(1)NSlider (NJU\ Slider)$</h3><div class="note danger"><p>本小节的重要参考网站:<a target="_blank" rel="noopener" href="https://wiki.libsdl.org/">https://wiki.libsdl.org/</a></p>
+</div>
+<h4 id="1-1-SDL-UpdateRect"><a href="#1-1-SDL-UpdateRect" class="headerlink" title="$(1.1)SDL_{-}UpdateRect$"></a>$(1.1)SDL_{-}UpdateRect$</h4><div class="note info"><p>$pdf$的生成：将$PA2$的幻灯片截图得到两种$png$，然后再转$pdf$就可以了。<br>脚本运行出错的解决方法：$overstackflow$上面有解答.</p>
+</div>
+<p>将<code>nslider</code>添加到$Makefile$里的$APP$变量。<br><div class="note primary"><p><code>void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h)</code>的作用是将画布 s 渲染到系统屏幕上，画布的左上角坐标为$(x, y)$,<br>目前直接调用<code>NDL_DrawRect(s-&gt;pixels, x, y, w, h);</code>就可以了,不过需要特判<code>w = 0 &amp;&amp; h = 0</code>的情况,将二者改为<code>s-&gt;w</code>和<code>s-&gt;h</code>.</p>
+</div><br></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/02/PA3-3-2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -636,7 +729,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-02 19:10:01" itemprop="dateModified" datetime="2021-12-02T19:10:01+08:00">2021-12-02</time>
+        <time title="修改时间：2021-12-31 11:59:56" itemprop="dateModified" datetime="2021-12-31T11:59:56+08:00">2021-12-31</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -925,93 +1018,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/10/30/Lab2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zxq-0058.github.io/2021/10/26/PA2-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Xuqin zhang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zxq的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/26/PA2-3/" class="post-title-link" itemprop="url">PA2.3</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-26 19:44:06" itemprop="dateCreated datePublished" datetime="2021-10-26T19:44:06+08:00">2021-10-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-28 19:51:38" itemprop="dateModified" datetime="2021-11-28T19:51:38+08:00">2021-11-28</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/PA/" itemprop="url" rel="index"><span itemprop="name">PA</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>$PA2.3$主要是设备的实现.关系图如下:<br><img src="/2021/10/26/PA2-3/gra.png" alt="逻辑图"><br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/26/PA2-3/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
