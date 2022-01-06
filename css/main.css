@@ -2644,7 +2644,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #06b604;
+  background: #ff41da;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2877,4 +2877,14 @@ p#div-border-top-purple {
   border-top-width: 5px;
   border-radius: 3px;
   border-top-color: #9954bb;
+}
+.hider_title {
+  cursor: pointer;
+  color: #ef4a05;
+}
+.close:before {
+  content: "▼";
+}
+.open:before {
+  content: "▲";
 }

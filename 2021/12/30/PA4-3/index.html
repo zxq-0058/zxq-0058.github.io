@@ -20,21 +20,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zxq-0058.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="修改$mstatus$$mstatus$的部分位:">
+<meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PA4.3">
 <meta property="og:url" content="https://zxq-0058.github.io/2021/12/30/PA4-3/index.html">
 <meta property="og:site_name" content="zxq的个人博客">
-<meta property="og:description" content="修改$mstatus$$mstatus$的部分位:">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zxq-0058.github.io/2021/12/30/PA4-3/1.png">
-<meta property="og:image" content="https://zxq-0058.github.io/2021/12/30/PA4-3/20.png">
 <meta property="article:published_time" content="2021-12-30T02:29:43.000Z">
-<meta property="article:modified_time" content="2021-12-30T07:36:43.741Z">
+<meta property="article:modified_time" content="2022-01-06T04:12:50.846Z">
 <meta property="article:author" content="Xuqin zhang">
 <meta property="article:tag" content="PA4">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zxq-0058.github.io/2021/12/30/PA4-3/1.png">
 
 
 <link rel="canonical" href="https://zxq-0058.github.io/2021/12/30/PA4-3/">
@@ -100,7 +97,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -113,7 +110,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-mstatus"><span class="nav-text">修改$mstatus$</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -200,10 +196,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-12-30 10:29:43 / 修改时间：15:36:43" itemprop="dateCreated datePublished" datetime="2021-12-30T10:29:43+08:00">2021-12-30</time>
+      <time title="创建时间：2021-12-30 10:29:43" itemprop="dateCreated datePublished" datetime="2021-12-30T10:29:43+08:00">2021-12-30</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-06 12:12:50" itemprop="dateModified" datetime="2022-01-06T12:12:50+08:00">2022-01-06</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -224,14 +226,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="修改-mstatus"><a href="#修改-mstatus" class="headerlink" title="修改$mstatus$"></a>修改$mstatus$</h3><p>$mstatus$的部分位:<br><img src="/2021/12/30/PA4-3/1.png" alt><br><span id="more"></span><br>考虑相对简单的修改方式,在<code>isa-def.h</code>里面做如下修改:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改宏定义:</span></span><br><span class="line"><span class="comment">// #define mstatus cpu.sysr[1]._csr </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mstatus cpu.MSTATUS.val</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Mstatus cpu.MSTATUS.m</span></span><br><span class="line"><span class="comment">// cpu结构体添加:</span></span><br><span class="line"><span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">      <span class="keyword">uint32_t</span> UIE  : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">uint32_t</span> SIE  : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">uint32_t</span> zero : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">uint32_t</span> MIE  : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">uint32_t</span> UPIE : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">uint32_t</span> SPIE : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">uint32_t</span> zero_ : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">uint32_t</span> MPIE : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">uint32_t</span> high : <span class="number">24</span>;</span><br><span class="line">    &#125; m;</span><br><span class="line">    <span class="keyword">uint32_t</span> val;</span><br><span class="line">  &#125; MSTATUS;</span><br></pre></td></tr></table></figure><br>根据讲义:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// isa_raise_intr</span></span><br><span class="line">  Mstatus.MPIE = Mstatus.MIE;</span><br><span class="line">  Mstatus.MIE = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//mret</span></span><br><span class="line">  Mstatus.MIE = Mstatus.MPIE;</span><br><span class="line">  Mstatus.MPIE = <span class="number">1</span>;</span><br></pre></td></tr></table></figure><br>这些都没什么难的,现在我们需要思考时钟中断的工作原理.<br><div class="note info"><p>$mstatus.MIE$的作用:</p>
-<ul>
-<li>等于0 :关中断,即使$INTR$引脚为高电平, CPU也不会响应中断.</li>
-<li>等于1 :开中断,并且当$INTR$引脚为高电平, CPU相应中断.<br>于是<code>isa_query_intr</code>函数也就不难写了:<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">word_t</span> <span class="title">isa_query_intr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(cpu.INTR &amp;&amp; Mstatus.MIE) &#123;</span><br><span class="line">    cpu.INTR = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> IRQ_TIMER;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> INTR_EMPTY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</div><br>当我们再次运行时,却发现<code>if</code>条件永远不成立,这是因为此时我们尚未将内核和用户程序设置为开中断的状态,因此,在<code>kcontext</code>和<code>ucontext</code>中添加:<code>ctx-&gt;mstatus |= 0x8;</code>.<br><div class="note success"><p>一个大概的流程图:<br><img src="/2021/12/30/PA4-3/20.png" alt="图一" style="zoom:85%;"></p>
-</div></p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="05691bee3800cee429dad0dff99b10c9c6b130bd60964a85205064e29418ad5a">98c5eac1e431cec725e9b50c1f9552a7cfc86e5f98ff8e04356e5c7ae46d7fa8c939043e0dc57294bc08fcfdfa007373369b2c0bf63cc1dd1c59e56e019d1bf6cc387debe35d6e46472770db5140f15cf94e3c294290f031a75e5f7e480b26c2a28c714d84e1a4b67c3e9090fd529d978173c04b4c30b3b0e41d76d54e43f2d84e7af6d4e16e60c4d52d76623218c05de4d1815b0b6cb6d464127e1ccc492e39896f6740120a21b55313cbb3c2f1f11c88c4fe1eb95581963b3e58fd693598b4b63b045e7ac53fdca2218237c698c3f6a99bfbdd39359fb26ae26c61bb12ab9074df54ef71d79eadb4aca8e738510392cd339695c0a78550e610499c99ba5cef1e4fab945ee99a10b1f5a63ababdb68866a233e21628d179548c561c5740a009068b2358f2393466b805fc3a04c7bfa64c84f4834afde710021547c6b80490800e052ec7c1f45fd3fb43f6a1a6a344a2322f6299414725150042567482e43d52cb3191f81cc12aa0a235666dfd1c903b8a569a763a4b2445abcf639690bb275c63dd566fe99a931f4e598e5367f297b71af649026c3bdda9be952cd86c1837a69e7b5f20530ed60feabb4f27cf4543f6e9a271c30cabf8e9f70d3a1d293c35cfa5129099428b3e8a95da6eb72f0485254d9f6dca88e5234740c7561bc62584abf08a5cc32b7da111fdfcb7f85804656c871a32a0f2b09d1688cdeb9cc14ab9dd2c195f7d049213135baa779da65d52f7d35bac49e2e3d813492fecb452dac1a36b86a90987c6bf8cc11019c1b1c79afb9a637fa3349b982e6c1ae4ca48374eaa8d068d74dd809c62a799fbe32ab96ab308256dab873d648eb552c47e2d0229e1464b0315dee09e8d4f0171726b4a66010e3e8d1990493d9873ee2fcfe9430e12c94fdd743d681158b112ce19b1a18551380007ca428b14dbf3f6f0722a14d766ead11e0602cd20ac9d5be0ea0457a206630e62dc75e1bacbc2f132f5a85a6a0b2937df0399b35cb353642cf3454e911dc9a5b6f94c0e2cc27d1b818cecdc94854612ad87c06dfefdbb8ea746afc1ba4536a828512b15cbb5e43ae2399a342ecea0cbbd5e8999a503c4e090e7f0e246975b45f72e84653e4a80834020b7d0e64940d62237521691f9525573895882b858810a1c0a43a6b9f45db0f107542ce9aa4c56b15941e3807826c834c9b96169fb90164e09080e397a58385bdebb745b6f1325ee0788ebfc2fd4f5b6b6941c552796c0b6ca0e3e563be5a46b00088dfb8c5f91509f1d2ddbfe3a53226d56c7d62cd666f2ea365c465e450a917f66542c14d4ecbc32b12af5dc93da139c656d1dda15b9d7ee67d6e78bbc81206d539554a8990dfe9d8525457b52f704afb1163a06d08d6c348fd92ed7136d4f67aae4b65937966fbc0b558aa6fdf11255a86e861a8e5d91701e8564b56b5bc1cb58f43c06910747f668c8e0e2ea9572424b86a2a260af3f25bd732175db1b91aa332a18262ff915cd2081355dd2429716335e185e9191d21f017858726c430e446297b4984c09245e0cde257150b067948bd3e2892ef58ae3c53564c63965b78c1198ac3973608ab8d0b2a9e4e7db7ab4a68cbe419c0a2bc74812ebb4bb7f894bdd086c3fc01ded0d0510bf4e4eb0067ff23dd7afc5ace5023b4b3192e1118d740251b04a237332480f3cbca991d5e91b9d40926bbfb36046b089179f19dbf22cd713db73eeac72ddf2399cca22e2add530c59fc32762b2f46013d26200fdeb0d3eafbda75bbe509a591d3b3fd16e74194f3dbbaf148df3d671d3d5323716ed094deac6e20a367be82790433cc4c09249e11fc2ff98e1d752b6ffc390fd0be5029e6332d35845229673aafc2b69d0bb121abc387772b275922038753866578c573eaab578c0d25396234932865e4158e87e5f2afba615366f4401b95014d0d5cbde7a247ac6ca237cf9b32814aea6b2c7d6d7fe163266505e70e68e2a3b20848ce7c2ceb2e79779e5ff385ae2cb8e3d567b290eae96723baf75d95ea205993e47675b9e7c321a7857dbdbfede0d624976dd54452970de934ec2a6dbe821d6a584a34eeb208209bfcd09c167afa43a97345b7840bb6a5f70eaabf09952bf4608e56a4601a81791ec29b4eadfb8042b8a07c2918f3159d964c2869b3603bae4fb36df9ec599deb556f3042541da2c6e1a1e476f6b1a8fbf2f865ce552c56b6ca6f5614d25d1924c772a03c7e9da7d39bbf329c6bdf9d62e937cc084f2a7985261841afc37c764645a9e5f91b1440b359b904167233077ef84b31770892c8b11c6e10e66407896da09fee33a216db7e14d86fc8cbb9ac87ad08a8dd6d4d76754455ede48b0ed5c984717de020cd45aaefad26f4000ed19165224c18627ed365e18f5c809a0b7166cab8031fffc47f02bf045e4d6c15c4b4798a71daf87c323a7246cf06a10eb2c713ad37235f304a0e81d460973d2d55ed8e63287434b02b7cdf507eb314357de5744ca8135f17bdc412a715f98b7b1bd4d8fe64dc7056d9077dc57fddd5111b277083f69f7468c6c6a0a243fa77d4a70a29adec8c700470337c08f124ddb4b3a422b9882ff7d99a22d24aa1829acb5d8640ed924d97a5fa34caf590206dc49ff507e0b16c3a3923d170af071faf02c50d845fc16af3b857fbe33617b7a6bc618aec8109a26193a7bd36e004651de75fa1123828126b5b9e44426dcb949c41aeb2b77c575ecaed683d318662258eeb8d017262d13dd83f2730cb08f3d5e5e5de9bff429419b5f57b0dcda82674ff731e06f593fad5f4880c8ef13b401bb9f3d8baf06ad8f417a83004626758ea81254355ffbe7558c6c17f2b3ac5f21c26df668e439285abb977e7ac3fbf2b80bb59137ad8f6a223a6b28d8d9ec5d26d5ed1a6090c5135a46fd71bb2a5618aaaacba692fefcf133aecfb7ae648df339b9af83184724cf89e6a1582b12994cd00c3df78a37670b42cc9036346d1d5ef35ecc34c9d363839fb90964a6eb5fa00295d2e8c40b6c3f93dcfd59b13c9f3cf573f07fd0f13c5b80589060f9ba0547d6a1917319b5d57ede9f3d358e3eac5d2f7e32ab38b761aed11878ea258c2df4afb8f088625161ec86b18d53ef9fc74d93eb0fa3ec5a1cd3bf259111b09d8a60baacdbe299dda0737cf8af30ae17ebc16e77dc8faa9a8f85f577304299b1ad3e98fcecd22f4c90245353bcd6190e4a28796a43b34e7e6d2cd2c6056416e7fe17123742d69a3e380c69309a4c26874daaf5029178f360d95852a23ab173977014ef1793c21d0568c9fd81e52991c22849f413e2ad544216db49942275316c8d0bb6c7bf3c881e3531a2e82c760817f022316a416e0bc46923b47a31e5094483b88049a63c07815c87cc938573333c0946297b6e834de3ebc46bbbaa5e7555801c947fbab0f581f42e153e73bb932985c71e725a847e08f0569bc7585448b17092b2772237d338735a415a93e933b3cdc68a3c18205886b017d21463e09af30b1546158efe1f6bdd35e68174e97399e7972d702c5a229e80f9077e597ac419b34752a05c7906b3ad0e07f7d7323d9cfefab58a098f6e8dbd1b2fdab91cd103817bdf83db4e6188ce2873df00c4fdf184f962d6e92e764148b0337d09ae5ddb84c424c94a34522290d7de8bc4883c675648db33747082c23f86413f94c604ebb6d90707b9a3552b4b22dc22e247ca8b74243f65f03fc8a52d895786f83d5937fabb331a20367deca0017e29aa60fa07a8497931c60974595291e40acf922b642db95fa095c43f23e00c77bbaf7e1ed99e07601a2fbf0cc63cb70de425d8c4698c5111fb0cc3b8a2d0fe0b61c2fbac6dc10cf42cb9bb5be4a98095dcc6f1434b19b5e91fdf31570a9771b6ce24a2c762b5ec6808ee7e4fc45f9120b7a5ca737e5c74d9d90fed353b11952edaa631de68453b3d2c34540c0a4744639d7e3a33c1dfe5e2ababb3a05e4b72cdd75e18a68a4c43db2176fac30f8f882f19dac9c7ac10b7d2c2d51c8fb2273d3296ae09cbf6e1beb961787282f45b6d333524ee71098d5d24d111a9c041fc83e2386ff3cb5f604c91f214aa5e738003a75d63f4864248e5284bd31af7e51db1eadcdba69be9b2dbbbc743973c0c0400cc6eca9dae9a83c137350a84ea018d896debed6ce32c2e3ceb7e2283f020ada1aee744c4c27cd7cfd0bce3da3c70dcd4569c31e0fa4d90a316dc056ffe66cdab6752af675dc1a7d5c41d45d4368de53b5f08ab3e974ed7f2ee105b97f991daa5db74fda8a8e7939866dcb5c47a815e2314b7cdfdfe081258f3e7d7189d7351586f1f03aff4c3df7533fc7d9d3bf37dbd8039be203330f357d57e4522199f28bca5def5345a057f95b7166791f143a6a186eaff876c0c6063eb79832b1a009cd831b253056d8c101f82877e4c8bd2e8353a13a14cc86d9f15a69d72f5692e7264e49a5d9f197c4e44153b60eefe32bfdd7864ef6210e568ec9d4c1618b3db001e1bd46857a0d5d8c9aa88b8a2720b65cab8c02f394e34da8daa5b610085ca6e91368f720cf5ecdbd3dee90382c8e1f01ca9f460f8c0177ac409fa77c5968b159a42efc652a0125ce72e4aca5f4c9b6ce45a2917d028b3cd3573c94c4d6b5ad2dc7bd8b27ab15381a12985a0757d2984b9db655604d89302cca53027a0a48bfc882fb32b498bb6796217c589c2b177e934514201137e081c538f359b5bd98d6c289eb09512e2755beac645c97e4c59c261c35694a1efaa1e666c739f3fe75523e9835f90fdf994ceb7a7ae37c2074ab350c2499feec76fb1b25adf99160bf54d79d0b14c617acc41fc90ecc30479fa4f1ad85e69e0f2f71c4aa675e581455565951768ef5efb85424928822f8c6a3318ba00fe5addd56014a3251f565d692b04f10a03a9b813e6468bd9c5a3f840fce9d9ee8053de2178221b069ef6e87e7f2ed509a393c3fd8f50f33d3ab49292f9dc74888a7a4bb87f68907e9a133a3c72542ce973100565ae2aecf9098f84178603181c0c66e58d56840a3c484ab988c50b28cd6c90e626b1cd7efda80757a0fa221daf6960ba7bbe48be68034148a7173970216420368ad11218e479daea0ee70d6e87164c01702b7bbe3f5803b611594f950062f577ecc7b20ea235c4d42dbd2365979d1c2f8f127d1c2228d40c743e967e07816a62ea6cf2f09fbbc378488ee0817eeb57ee673a14f0807d894392d69694546da123be57b7c0b37496ee974401a5715e9dbe428d0b513d28c37935cc9bc1ff3400a10734e8be2391bd01ada9179445893d24e68a8fc513db015617a6be836c3fec9423e251100953c49e9d7bf219af5a1e9c851587b16ba9b82739d7b25fa6df6d52a94bbef8fec8580b310b8ef71c7dbec64814e6d4390bff3477fe7e4ca68185e6eb7daf676853da3cc84584a7cbf51c703ed0fef8cb6615b9bddbfb6e1b718e67580f702d357d8b24800ca801bf795ce45faf2aa394d9a13d45d410c4434ea6956e2c38c54809216705ab6dd2570ca2e016f171378ffa9b06ea78e83873886a962bac35d6332b2578eb6a448f8bb6cbd6690ec7637f268f711425ae4ed1911bb835e811063924ecc84aa2240c7711f168a35ec964ca64b248f7c4fbaf1b9eab33294cc5207ff25bb1323e2f2934d057e558db57e6560cfae79437f1db66b2b130d36122daadee9319252b68c98542d5707d5c31b76c9b72f0cacbc384b530cd606940b74649677f17ec867e7cb5463354f6862e8135e3af059e2c47fd225248dad9ecd453156642f0d1801cbbd015fa545945edfa6de6d62c8207bbd94f91077a1571c5e27517447bd9713c86fa8a0036d03e9a44b91e874563a63e11ce017f31853b3c43d31f82bc4937131b448ef71aa427e42136c2c6204e67f408d173185ad30180f7d540a685559bfeec521cb46165b58fe0db998b74de546fbcc021f4e8de7af7d676f2f2c6e6e61d9cdefeac5b50a97cf69eb69a10db2e7d990909e01f634f3791a6654035b2752eecd47e23dbc98b0b56c414cd58c198a10fb5f113a0f48f4643de9a0958f2f8207d96cd57fdbfd79f1ac87885f59b36a545cce7acf00e100ecd02c112faf3a1b616cae0a308e252b9d0ab8989e397dba60ae3b17235bc8f341867c3fe5f6ebab8262093cdb9906918c108756d6e2055b125646e65670269e7049b0320343f6aa3ee301f6ac8576837ece690d154fe4bd76398a821f2cb2f41c51439155d6308759b8521153e944ac3bf2068b109e6c409fba281462580b3fc069db9c67e06720e0c5a58cc8dd2c0abb2881c168fbc3d3e41393f2e156c83ba70859507e6b3e7cba1bfef80a3a3d966189b413438740d06ae8ddf7242834ac3f34edcfc5270ecd941d551670a52cdc91711a8cc26903cb23026a518b783b63500197616d39298b1050424db2a9c2d4e700e34749e9e451d5a00b561f208843154f45c5e2e290cef31616580a90001bd2c0c14b34972dbb0cc719288693238a3979baff6fe08ecfb2c71af7f7108102e630665dfe8ffc8c839bd9240ca55efc07fb315ef26135e9eccac744d1d2686842b08ca1f32917e70aea0ca27a8a959ab24ecbd645cbac44b07ecc8f5bd5696565a2313a53407bc56652c7087fd64cc5e75c15d8be5de46a39659222b55a36628e897dee183f76c012fea0d271892c8d0c41447ebdd03c968d45d79bea1f3deeef219075c063a621d68bf63461fc2ce27e369942c50c061123268f1252300da0a3aa42ee428c71eed94d9a53f83ff9f54d89bd41055ebc0e149f3d4b0a1106c96141ecb0a6c021a440cbbb7da3e1d8ce4294e80f3dc74c6b69d1b85654eec05c498fab0f62559d92b02b0e3a5d477064adfb3d2392961714c1309fb19cff65f1e0e1f6c423c63f06fd2082f3930eb9e93fbafcadefc5bae15e985f68292ed1a09796cbb39c370102b2c5509a998ac99e6399aaabf5555837aaed260654bcf3f2fb43ec6d6de2de8186f0ba5c09fe506fcb260c15b8d150fb3add95942cb6264c8c34c47ddd27ebde32622be72b6ed663a028ccc765985a2be705fdce371db23a73420f85897a2a30a4857dadf0ee6f97f4f3e1d14c7b8bc8c7e94b45e23ee03a91f80f700f24d19bb020a4cbf96999baecdcab75beb2e30e1462cc5e5557668c303a80c5157f2f8db709ac11e5881278b0da7d7d592b78367a37ad69a98f18f7013074bb773e574d498849e535203e756aaa8524e2adcc252e3a31fa6703162c03b5d662933d8092af8ca77c5e269b0fcafc09fdade1679e190ee50e2314e6b20d64abc7d26d6038b91091148e2c88eb2d81ea25bc82dd2fe08dcc58243884e4ab66274ac9020701b8cb3a5e594365436b08c3eaaebed2ba3d4b045bba32c95318c56c2e5df49fb69ccfacef079785be2df81e9aebc71d62ec6dc934b25f947c5093e2df1cf23d616eaf611ddb626fd13660c375f1cdb3833fc5074a93efc8c3d8da776956ca61002fc259027274bd681bcb020d601cb7d9132727f3107c765cdeae3703ebc9cc2ad2eceb966d34a91b71f4034844b45430907496018ccde3743a9073d5e9ceb20f35f44bd2a57c7a403a7d85f050d2031b89359e86fb947ed9d528561617e04d70494e27d29d2be607b799ce8c0f6</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
 
     
@@ -272,7 +278,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class=""></i>
   </span>
@@ -303,6 +309,8 @@
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
+
+  <script type="text/javascript" src="/js/fold_action.js"></script>
 
 </body>
 </html>
