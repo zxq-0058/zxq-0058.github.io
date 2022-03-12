@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.google.com//css?family=Times+New+Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zxq-0058.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="有关makefile的笔记.并结合自己编写的一个小项目具体给出实例.本文的参考文档:  - http:&#x2F;&#x2F;faculty.cs.niu.edu&#x2F;~mcmahon&#x2F;CS241&#x2F;Notes&#x2F;Unix_Reference&#x2F;command_gcc.html - https:&#x2F;&#x2F;caiorss.github.io&#x2F;C-Cpp-Notes&#x2F;compiler-flags-options.html - GNU m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Makefile">
+<meta property="og:url" content="https://zxq-0058.github.io/2022/01/21/Makefile/index.html">
+<meta property="og:site_name" content="zxq的个人博客">
+<meta property="og:description" content="有关makefile的笔记.并结合自己编写的一个小项目具体给出实例.本文的参考文档:  - http:&#x2F;&#x2F;faculty.cs.niu.edu&#x2F;~mcmahon&#x2F;CS241&#x2F;Notes&#x2F;Unix_Reference&#x2F;command_gcc.html - https:&#x2F;&#x2F;caiorss.github.io&#x2F;C-Cpp-Notes&#x2F;compiler-flags-options.html - GNU m">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zxq-0058.github.io/2022/01/21/Makefile/2.png">
+<meta property="article:published_time" content="2022-01-21T02:17:16.000Z">
+<meta property="article:modified_time" content="2022-03-12T07:21:24.867Z">
+<meta property="article:author" content="Xuqin zhang">
+<meta property="article:tag" content="Makefile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zxq-0058.github.io/2022/01/21/Makefile/2.png">
+
+
+<link rel="canonical" href="https://zxq-0058.github.io/2022/01/21/Makefile/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zxq-0058.github.io/2022/01/21/Makefile/","path":"2022/01/21/Makefile/","title":"Makefile"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Makefile | zxq的个人博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zxq的个人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Balaenoptera musculus</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86"><span class="nav-text">知识</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-text">实例</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xuqin zhang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zxq-0058.github.io/2022/01/21/Makefile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuqin zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zxq的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Makefile
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-21 10:17:16" itemprop="dateCreated datePublished" datetime="2022-01-21T10:17:16+08:00">2022-01-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-03-12 15:21:24" itemprop="dateModified" datetime="2022-03-12T15:21:24+08:00">2022-03-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Makefile/" itemprop="url" rel="index"><span itemprop="name">Makefile</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note primary"><p>有关<code>makefile</code>的笔记.<br>并结合自己编写的一个小项目具体给出实例.<br>本文的参考文档:</p>
+<pre><code> - http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/Unix_Reference/command_gcc.html
+- https://caiorss.github.io/C-Cpp-Notes/compiler-flags-options.html
+- GNU make
+</code></pre></div>
+<span id="more"></span>
+<!-- = 递归赋值
+:= 简单赋值
++= append to -->
+<h4 id="知识"><a href="#知识" class="headerlink" title="知识"></a>知识</h4><p><code>makefile</code>中常见的预定义系统变量:<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CXX</span><br><span class="line">AR</span><br><span class="line"><span class="keyword">CC</span></span><br><span class="line">CFLAGS</span><br><span class="line">CPPFLAGS</span><br><span class="line">CXXFLAGS 通常比如有-<span class="built_in">I</span>(头文件目录)</span><br><span class="line"><span class="keyword">RM</span> 文件删除参数</span><br><span class="line">LIBS: 链接库(生成可执行文件阶段)</span><br></pre></td></tr></table></figure><br><code>makefile</code>常见变量:<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$*</span> : 不包含扩展名的目标文件名称</span><br><span class="line"><span class="variable">$+</span> : 所有依赖文件</span><br><span class="line"><span class="variable">$&lt;</span> : 第一个依赖文件</span><br><span class="line"><span class="variable">$@</span> : 目标文件的完整名称</span><br><span class="line"><span class="variable">$^</span> : 所有不重复的依赖文件,以空格分开</span><br></pre></td></tr></table></figure><br>在命令前面加上@符号,不显示命令执行</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(info ...)</span></span><br><span class="line"><span class="variable">$(<span class="built_in">addprefix</span> bulid/, <span class="variable">$(OBJS)</span>)</span></span><br><span class="line">OBJS = $(SRCS:.c=.o)</span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: all clean</span></span><br><span class="line"><span class="section">all: <span class="variable">$(TARGET)</span></span></span><br><span class="line"><span class="section">clean: rm -f <span class="variable">$(OBJS)</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>仓库地址:<a target="_blank" rel="noopener" href="https://github.com/zxq-0058/LCplusplus">https://github.com/zxq-0058/LCplusplus</a><br>这里将以仓库中的代码为例,解析如何编写<code>makefile</code><br>文件结构如下:<br><img src="/2022/01/21/Makefile/2.png" alt><br>以下步骤为我编写此项目的<code>makefile</code>的步骤:</p>
+<blockquote>
+<p>各种目录:<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WORK_DIR := <span class="variable">$(<span class="built_in">shell</span> pwd)</span> <span class="comment">#当前路径</span></span><br><span class="line">INC_DIR := <span class="variable">$(WORK_DIR)</span> </span><br><span class="line">SRC_DIR := <span class="variable">$(WORK_DIR)</span>/src</span><br><span class="line">OBJ_DIR := <span class="variable">$(WORK_DIR)</span>/build</span><br></pre></td></tr></table></figure><br>文件和目标:<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SOURCES := <span class="variable">$(<span class="built_in">shell</span> find <span class="variable">$(SRC_DIR)</span> -name &#x27;*.cpp&#x27;)</span></span><br><span class="line">OBJECTS := $(SOURCES:<span class="variable">$(SRC_DIR)</span>/%.cpp=<span class="variable">$(OBJ_DIR)</span>/%.o) <span class="comment">#各种.o文件</span></span><br><span class="line">TARGET := main</span><br></pre></td></tr></table></figure><br>编译和链接规则<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CXXFLAGS := -I<span class="variable">$(INC_DIR)</span> -MMD -MP</span><br><span class="line">LDLIBS   += -lSDL2 -lSDL2_image <span class="comment">#项目有sdl库,所以需要特殊指出</span></span><br></pre></td></tr></table></figure><br>recipes<br>由.cpp到.o:<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(OBJ_DIR)</span>/%.o: <span class="variable">$(SRC_DIR)</span>/%.cpp</span><br><span class="line">	@mkdir -p <span class="variable">$(<span class="built_in">dir</span> <span class="variable">$@</span>)</span> </span><br><span class="line">	@<span class="variable">$(CXX)</span> -c <span class="variable">$(CXXFLAGS)</span> -o <span class="variable">$@</span> <span class="variable">$&lt;</span></span><br></pre></td></tr></table></figure><br>有.o到可执行文件:<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(TARGET)</span>: <span class="variable">$(OBJECTS)</span></span><br><span class="line">	<span class="variable">$(CXX)</span> <span class="variable">$(LDFLAGS)</span> <span class="variable">$^</span> <span class="variable">$(LDLIBS)</span> -o <span class="variable">$@</span> </span><br></pre></td></tr></table></figure></p>
+<p>伪目标<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: clean</span></span><br><span class="line"><span class="section">clean: </span></span><br><span class="line">	<span class="variable">$(RM)</span> -r <span class="variable">$(OBJ_DIR)</span> <span class="variable">$(TARGET)</span> <span class="comment">#同时删除build文件夹和可执行目标文件</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Makefile/" rel="tag"># Makefile</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/19/LPython-4/" rel="prev" title="LPython(4):可视化">
+                  <i class="fa fa-chevron-left"></i> LPython(4):可视化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/22/OSM1/" rel="next" title="OSM1">
+                  OSM1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuqin zhang</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/fold_action.js"></script>
+
+</body>
+</html>
