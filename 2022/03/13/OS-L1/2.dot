@@ -1,0 +1,13 @@
+digraph{
+		node0[label="根据size确定slab的type"]
+		node0->node1
+		node1[label="获取type对应的链表的头指针:\n
+		current = page_list[type]"]
+		node1->node2
+		node2[label="遍历page_list[type]"]
+		node3[label="某一个页面的header不为空,\n 表示当前链表空闲的slab，\n 修改该页面的header指向当前的slab的next，\n 同时将找到的空闲的slab作为返回值"]
+		node4[label="当前链表的所有页面都没有空闲的slab，\n 创建新的页面并返回一个空闲的slab"]
+		node2->node3[label="case 1"]
+		node2->node4[label="case 2"]
+}
+
